@@ -4,20 +4,39 @@ require( `dotenv` ).config( {
 
 const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
+let basePath = ''
 module.exports = {
-  siteMetadata: {
-    // You can overwrite values here that are used for the SEO component
-    // Of course you can also add new values here to query them like usual
-    // See all options:
-    // https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-cara/gatsby-config.js
-    siteTitleAlt: `Curiozități Știați că Info`,
-    siteImage: `./static/banner.jpg`,
-  },
+    siteMetadata: {
+      siteTitle      : `Curiozități`,
+      siteTitleAlt   : `Curiozități Știați că Info`,
+      siteHeadline   : `Curiozități Știați că Info`,
+      siteUrl        : `https://stiati.netlify.app`,
+      siteDescription: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
+      siteLanguage   : `ro`,
+      siteImage      : `/banner.png`,
+      author         : `@stefan`,
+      basePath,
+    },
   plugins     : [
     {
       resolve: `@lekoarts/gatsby-theme-cara`, // See the theme's README for all// available options
       options: {},
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `sections`,
+        path: `${ __dirname }/src/@lekoarts/gatsby-theme-cara/src/sections`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {},
+    },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-theme-ui`,
     // {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
@@ -26,6 +45,7 @@ module.exports = {
     // },
     {
       resolve: `gatsby-plugin-manifest`,
+
       options: {
         name            : `Curiozități Știați că Info Știai că`,
         short_name      : `Curiozități`,
@@ -48,6 +68,7 @@ module.exports = {
         ],
       },
     },
+
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
     {
