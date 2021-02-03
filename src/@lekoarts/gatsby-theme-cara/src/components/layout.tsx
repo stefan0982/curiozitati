@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// @ts-ignore
 import React from "react"
 import { Global } from "@emotion/core"
 import { jsx } from "theme-ui"

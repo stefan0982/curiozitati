@@ -10,7 +10,7 @@ module.exports = {
       siteTitle      : `Curiozități`,
       siteTitleAlt   : `Curiozități Știați că Info`,
       siteHeadline   : `Curiozități Știați că Info`,
-      siteUrl        : `https://stiati.netlify.app`,
+      siteUrl        : `https://stiati11.netlify.app`,
       siteDescription: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
       siteLanguage   : `ro`,
       siteImage      : `/banner.png`,
