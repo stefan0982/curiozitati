@@ -1,6 +1,6 @@
-require( `dotenv` ).config( {
-                              path: `.env`,
-                            } )
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
@@ -69,22 +69,22 @@ module.exports = {
       },
     },
 
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `sjvzi6dlarr9`,
-        accessToken: `fNNZsc2PHCgGHyNGDF51_xH-JtJAKrR8jH6CoeGh7O0`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    shouldAnalyseBundle && {
-      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
-      options: {
-        analyzerMode  : `static`,
-        reportFilename: `_bundle.html`,
-        openAnalyzer  : false,
-      },
-    },
+    // shouldAnalyseBundle && {
+    //   resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+    //   options: {
+    //     analyzerMode  : `static`,
+    //     reportFilename: `_bundle.html`,
+    //     openAnalyzer  : false,
+    //   },
+    // },
   ].filter( Boolean ),
 }
