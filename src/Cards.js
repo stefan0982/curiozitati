@@ -4,7 +4,7 @@ import Card                        from './Card'
 
 const query = graphql`
 {
-  curiozitati:allContentfulCuriozitati {
+  curiozitati: allContentfulCuriozitati(sort: {fields: imagine___createdAt, order: DESC}) {
     edges {
       node {
         id
@@ -18,7 +18,9 @@ const query = graphql`
   }
 }
 
+
 `
+
 const Cards = () => {
   const data = useStaticQuery(query)
   return (

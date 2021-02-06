@@ -31,11 +31,6 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-theme-ui`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`, options: {
-    //     trackingId: process.env.GOOGLE_ANALYTICS,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
 

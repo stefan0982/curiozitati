@@ -1,11 +1,10 @@
 {
   "private": true,
-  "name": "cara",
-  "description": "Playful and Colorful One-Page portfolio featuring Parallax effects and animations",
+  "name": "curiozitati",
+  "description": "Dezvoltăte multilateral cu noi",
   "version": "0.2.8",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "author": "Stefan",
   "license": "0BSD",
-  "starter-name": "gatsby-starter-portfolio-cara",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -21,7 +20,6 @@
     "gatsby": "^2.25.3",
     "gatsby-image": "^2.8.0",
     "gatsby-plugin-emotion": "^4.5.0",
-    "gatsby-plugin-google-analytics": "^2.4.1",
     "gatsby-plugin-google-gtag": "^2.8.0",
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-mdx": "^1.7.1",
