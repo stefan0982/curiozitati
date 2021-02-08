@@ -2,13 +2,12 @@ require( 'dotenv' ).config( {
   path: `.env.${ process.env.NODE_ENV }`,
 } )
 
-
 let basePath = ''
 module.exports = {
   siteMetadata: {
     siteTitle      : `Curiozități`, siteTitleAlt: `Curiozități Știați că Info`,
     siteHeadline   : `Curiozități Știați că Info`,
-    siteUrl        : `https://stiati11.netlify.app`,
+    siteUrl        : `https://curiozitati.app`,
     siteDescription: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
     siteLanguage   : `ro`, siteImage: `/banner.png`, author: `@stefan`,
     basePath,
@@ -37,18 +36,10 @@ module.exports = {
       options: {
         name       : `Curiozități Știați că Info Știai că`,
         short_name : `Curiozități`,
-        description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
+        description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral, Ziua în care nu înveți nimic nou este pierdută`,
         start_url  : `/`, background_color: `#141821`, theme_color: `#f6ad55`,
-        display    : `standalone`, icon: `./static/android-chrome-512x512.png`,
-        icons      : [
-          {
-            src : `./static/android-chrome-192x192.png`, sizes: `192x192`,
-            type: `image/png`,
-          }, {
-            src : `./static/android-chrome-512x512.png`, sizes: `512x512`,
-            type: `image/png`,
-          },
-        ],
+        // display    : `standalone`, icon: `./static/android-chrome-512x512.png`,
+        display    : `standalone`, icon: `./static/chrome.png`,
       },
     },
 

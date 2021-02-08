@@ -20,6 +20,7 @@ const Cara = () => {
     }`)
 
     let projectPages = Math.ceil(curiozitati.totalCount/2)
+    let projectOffset = window.innerWidth < 380 ? 2 : 1
     // if (window.innerWidth >= 1024) {
     //     projectPages = Math.ceil(curiozitati.totalCount/3.4)
     // } else {
@@ -29,7 +30,7 @@ const Cara = () => {
             <Layout>
                 <Parallax pages={projectPages + 1}>
                     <Hero offset={0} factor={1} />
-                    <Projects offset={1} factor={projectPages} />
+                    <Projects offset={projectOffset} factor={projectPages} />
                     <Contact offset={projectPages } factor={1} />
                 </Parallax>
             </Layout>
