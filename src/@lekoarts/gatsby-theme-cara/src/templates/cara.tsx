@@ -20,7 +20,8 @@ const Cara = () => {
     }`)
 
     let projectPages = Math.ceil(curiozitati.totalCount/2)
-    const projectOffset = typeof window !== `undefined` && window.innerWidth < 380 ? 2 : 1
+    const projectOffset = typeof window !== `undefined` && window.innerWidth <= 370 ? 3 : 1
+
     // if (window.innerWidth >= 1024) {
     //     projectPages = Math.ceil(curiozitati.totalCount/3.4)
     // } else {
