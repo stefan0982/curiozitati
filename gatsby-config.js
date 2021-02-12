@@ -4,7 +4,13 @@ require( 'dotenv' ).config( {
 
 module.exports = {
   siteMetadata: {
-    title: "curiozitati",
+    siteUrl: `https://curiozitati.app/`,
+    siteTitleAlt: `Cele mai interesante curiozități știați că info știai că`,
+    siteHeadline   : `Cele mai interesante curiozități știați că info știai că`,
+    title: "Curiozitati",
+    siteDescription: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
+    siteLanguage   : `ro`,
+    author: `stefan`,
   },
   plugins: [
     {
