@@ -4,13 +4,17 @@ require( 'dotenv' ).config( {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://curiozitati.app/`,
+    siteUrl: `https://curiozitati.app`,
+    url: 'https://curiozitati.app',
+    titleTemplate: "%s · Cele mai interesante curizități",
     siteTitleAlt: `Cele mai interesante curiozități știați că info știai că`,
     siteHeadline   : `Cele mai interesante curiozități știați că info știai că`,
     title: "Curiozitati",
-    siteDescription: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
+    description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
     siteLanguage   : `ro`,
     author: `stefan`,
+    image: `/banner.png`,
+    twitterUsername: '@curiozitati'
   },
   plugins: [
     {

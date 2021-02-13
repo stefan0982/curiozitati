@@ -6,6 +6,7 @@ import CardContent         from '@material-ui/core/CardContent'
 import { Link }            from 'gatsby'
 import GatsbyImage         from 'gatsby-image'
 import slug                from 'slug'
+import moment from 'moment'
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -31,7 +32,29 @@ export default function PostCard({
   avatar,
   categoria,
   data,
+  ziua,
+  format
 }) {
+
+  // console.log(ziua)
+  // console.log(typeof ziua)
+
+  moment.updateLocale('ro', {
+    calendar : {
+      lastDay : `[ieri la] H:mm`,
+      sameDay : `[astăzi la] H:mm`,
+      nextDay : `[mâine la] H:mm`,
+      lastWeek : `H:mm, L`,
+      nextWeek : `L`,
+      sameElse : `L`
+    }
+  });
+
+  // console.log(ziua)
+  // console.log(data)
+  //
+  console.log(moment(data).locale('ro').calendar())
+
   const [stateDescription, setDescription] = useState( description.slice(
     0,
     75,
@@ -49,7 +72,7 @@ export default function PostCard({
           className="disable-link"
           style={{ color: 'black', fontSize: '1.2em' }}
         >{ categoria }</Link> }
-        subheader={ data }
+        subheader={ moment(data).locale('ro').calendar() }
         style={ {
           padding   : 8,
           marginLeft: 8,

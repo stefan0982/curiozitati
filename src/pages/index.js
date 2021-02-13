@@ -15,7 +15,9 @@ const IndexPage = ({ data }) => {
           description={ node.imagine.description }
           avatar={node.categoria[0].avatar}
           categoria={node.categoria[0].denumirea}
-          data={node.createdAt}
+          data={node.data}
+          ziua={node.ziua}
+          format={node.format}
           key={node.id}
         />
       ) ) }
@@ -29,7 +31,9 @@ export const query = graphql`
     edges {
       node {
         id
-        createdAt(fromNow: true, locale: "ro")
+        ziua:createdAt(locale: "ro", formatString: "dddd")
+        data:createdAt
+        format:createdAt(fromNow:true, locale:"ro")
         imagine {
           fluid {
             ...GatsbyContentfulFluid
