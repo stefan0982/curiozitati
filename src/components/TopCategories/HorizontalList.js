@@ -1,7 +1,7 @@
-import React          from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import GridList       from '@material-ui/core/GridList'
-import IconButton     from '@material-ui/core/IconButton'
+import React, { useEffect, useState } from 'react'
+import { makeStyles }                 from '@material-ui/core/styles'
+import GridList                       from '@material-ui/core/GridList'
+import IconButton                     from '@material-ui/core/IconButton'
 
 import logo                              from '../../../static/logo.png'
 import { Typography }                    from '@material-ui/core'
@@ -50,47 +50,31 @@ const useStyles = makeStyles( (theme) => (
 export default function HorizontalList() {
   const classes = useStyles()
   const { categorii } = useStaticQuery( query )
+  const [windowWidth, setWindowWidth] = useState( 0 )
+  let resizeWindow = () => {
+    setWindowWidth( window.innerWidth )
+  }
 
-  // categoria toate la care pagina trebuie sa fie doar /
-  const categoriaToate = categorii.edges.filter( data => data.node.denumirea
-                                                         === 'Toate' )[0].node
+  useEffect( () => {
+    resizeWindow()
+    typeof window !== `undefined` && window.addEventListener( 'resize',
+      resizeWindow,
+    )
+    return () => typeof window !== `undefined` && window.removeEventListener(
+      'resize', resizeWindow )
+  }, [] )
+
+  const categorySize = windowWidth <= 500 ? '7.5vh' : '7.5vw'
+  const containerHeight = windowWidth <= 500 ? '14vh' : '14vw'
 
   return (
     <div className={ classes.root }>
       <GridList className={ classes.gridList }>
-        <Link
-          to="/"
-          style={ { height: '14vh' } }
-          className="disable-link"
-          key={ categoriaToate.id }
-        >
-          <div style={ { flexDirection: 'column' } }>
-            <IconButton>
-              { categoriaToate.avatar ? <GatsbyImage
-                fixed={ categoriaToate.avatar.fixed }
-                alt={ categoriaToate.avatar.title }
-                style={ {
-                  width : '7.5vh',
-                  height: '7.5vh',
-                } }
-              /> : <img
-                src={ logo }
-                alt="logo"
-                className={ classes.avatar }
-              /> }
-            </IconButton>
-            <Typography
-              variant={ 'body2' }
-              color="textPrimary"
-              style={ { marginTop: -10 } }
-              align="center"
-            >{ categoriaToate.denumirea }</Typography>
-          </div>
-        </Link>
-        { categorii.edges.filter(data => data.node.denumirea !== 'Toate').map( ({ node }) => (
+        { categorii.edges.map( ({ node }) => (
           <Link
-            to={`/${slug(node.denumirea)}`}
-            style={ { height: '14vh' } }
+            to={ node.denumirea === 'Toate' ? '/' : `/${ slug(
+              node.denumirea ) }` }
+            style={ { height: containerHeight } }
             className="disable-link"
             key={ node.id }
           >
@@ -100,8 +84,8 @@ export default function HorizontalList() {
                   fixed={ node.avatar.fixed }
                   alt={ node.avatar.title }
                   style={ {
-                    width : '7.5vh',
-                    height: '7.5vh',
+                    width : categorySize,
+                    height: categorySize,
                   } }
                 /> : <img
                   src={ logo }

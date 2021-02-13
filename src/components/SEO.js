@@ -74,7 +74,7 @@ SEO.defaultProps = {
   description: 'O zi în care nu înveți nimic nou este o zi pierdută, deaceea'
                + ' află cele mai interesante curiozități aici',
   image: banner,
-  article: false,
+  article: true,
 }
 
 const query = graphql`
