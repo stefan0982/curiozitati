@@ -22,8 +22,6 @@ const IndexPage = ({ data }) => {
           avatar={ node.categoria[0].avatar }
           categoria={ node.categoria[0].denumirea }
           data={ node.data }
-          ziua={ node.ziua }
-          format={ node.format }
           key={ node.id }
         />
       ) ) }
@@ -37,9 +35,7 @@ export const query = graphql`
     edges {
       node {
         id
-        ziua:createdAt(locale: "ro", formatString: "dddd")
         data:createdAt
-        format:createdAt(fromNow:true, locale:"ro")
         imagine {
           fluid {
             ...GatsbyContentfulFluid

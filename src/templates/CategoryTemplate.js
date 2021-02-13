@@ -2,12 +2,21 @@ import React       from 'react'
 import Layout      from '../components/Layout'
 import { graphql } from 'gatsby'
 import PostCard    from '../components/Feed/PostCard'
+import SEO         from '../components/SEO'
+import '../pages/styles.css'
 
 const CategoryTemplate = ({data}) => {
   const categoria = data.categoria.denumirea
   const avatar = data.categoria.avatar
+  const seoImage = data.categoria.image.fixed.src
   return (
     <Layout>
+      <SEO
+        image={`https://${seoImage}`}
+        title={categoria}
+        description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
+      />
+
       { data.curiozitati.edges.map ( ({ node }) => (
         <PostCard
           img={ node.imagine }
@@ -16,8 +25,6 @@ const CategoryTemplate = ({data}) => {
           avatar={avatar}
           categoria={categoria}
           data={node.data}
-          ziua={node.ziua}
-          format={node.format}
           key={node.id}
         />
       ) ) }
@@ -31,9 +38,7 @@ export const query = graphql`
     edges {
       node {
         id
-        ziua:createdAt(locale: "ro", formatString: "dddd")
         data:createdAt
-        format:createdAt(fromNow:true, locale:"ro")
         imagine {
           fluid {
             ...GatsbyContentfulFluid
@@ -47,6 +52,11 @@ export const query = graphql`
   categoria:contentfulCategorii(denumirea: {eq: $category}) {
     avatar {
       fixed(width: 40, height: 40) {
+        ...GatsbyContentfulFixed_tracedSVG
+      }
+    }
+    image:avatar {
+      fixed {
         ...GatsbyContentfulFixed_tracedSVG
       }
     }

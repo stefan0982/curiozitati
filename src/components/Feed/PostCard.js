@@ -6,8 +6,8 @@ import CardContent         from '@material-ui/core/CardContent'
 import { Link }            from 'gatsby'
 import GatsbyImage         from 'gatsby-image'
 import slug                from 'slug'
-import moment              from 'moment'
-import SEO                 from '../SEO'
+import { formatRelative }  from 'date-fns'
+import { ro }              from 'date-fns/locale'
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -31,50 +31,48 @@ export default function PostCard({
   avatar,
   categoria,
   data,
-  ziua,
-  format,
 }) {
 
-  moment.updateLocale( 'ro', {
-    calendar: {
-      lastDay : `[ieri la] H:mm`,
-      sameDay : `[astăzi la] H:mm`,
-      nextDay : `[mâine la] H:mm`,
-      lastWeek: `L, H:mm`,
-      nextWeek: `L`,
-      sameElse: `L`,
-    },
-  } )
+  const formatRelativeLocale = {
+    lastWeek : 'eeee \'la\' kk:mm',
+    yesterday: '\'ieri la\' kk:mm',
+    today    : '\'astăzi la\' kk:mm',
+    tomorrow : '\'maine la\' kk:mm',
+    nextWeek : '\'urmatoarea \'eeee \'la\' kk:mm',
+    other    : 'PP',
+  }
 
-  const [stateDescription, setDescription] = useState( description.slice( 0,
-    75,
-  ) )
+  const locale = {
+    ...ro,
+    formatRelative: token => formatRelativeLocale[token],
+  }
+
+  const [stateDescription, setDescription] = useState(
+    description.slice( 0, 75 ) )
   const [readMore, setReadMore] = useState( '... mai mult' )
   const classes = useStyles()
 
   return (
     <>
-      {/*<SEO title={title} description={description} image={img.fluid.src} />*/}
       <Card className={ classes.root }>
         <CardHeader
           title={ <Link
-            to={ categoria
-                 !== 'Toate' ? `/${ slug( categoria ) }` : '/' }
+            to={ categoria !== 'Toate' ? `/${ slug( categoria ) }` : '/' }
             className="disable-link"
             style={ {
               color   : 'black',
               fontSize: '1.2em',
             } }
           >{ categoria }</Link> }
-          subheader={ moment( data ).locale( 'ro' ).calendar() }
+          subheader={ formatRelative(
+            new Date( data ), Date.now(), { locale } ) }
           style={ {
             padding   : 8,
             marginLeft: 8,
           } }
           // de cautat cum la click sa ramai tot acolo fara reload
           avatar={ <Link
-            to={ categoria
-                 !== 'Toate' ? `/${ slug( categoria ) }` : '/' }
+            to={ categoria !== 'Toate' ? `/${ slug( categoria ) }` : '/' }
             className="disable-link"
           >
             <GatsbyImage
@@ -107,9 +105,7 @@ export default function PostCard({
                 color : 'gray',
                 cursor: 'pointer',
               } }
-            >{ description.length
-               >= 75
-               && readMore }</span>
+            >{ description.length >= 75 && readMore }</span>
           </div>
         </CardContent>
       </Card>
