@@ -14,8 +14,6 @@ const useStyles = makeStyles( (theme) => (
       marginTop: 25,
     },
     media : {
-      // height    : 0,
-      // paddingTop: '100%', // 16:9
       width: '100%',
     },
     avatar: {
@@ -36,24 +34,16 @@ export default function PostCard({
   format
 }) {
 
-  // console.log(ziua)
-  // console.log(typeof ziua)
-
   moment.updateLocale('ro', {
     calendar : {
       lastDay : `[ieri la] H:mm`,
       sameDay : `[astăzi la] H:mm`,
       nextDay : `[mâine la] H:mm`,
-      lastWeek : `H:mm, L`,
+      lastWeek : `L, H:mm`,
       nextWeek : `L`,
       sameElse : `L`
     }
   });
-
-  // console.log(ziua)
-  // console.log(data)
-  //
-  console.log(moment(data).locale('ro').calendar())
 
   const [stateDescription, setDescription] = useState( description.slice(
     0,
@@ -98,7 +88,7 @@ export default function PostCard({
       <GatsbyImage
         className={ classes.media }
         fluid={ img.fluid }
-        alt="Paella dish"
+        alt={title}
       />
       <CardContent>
         <div>
