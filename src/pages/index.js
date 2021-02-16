@@ -7,10 +7,12 @@ import SEO                   from '../components/SEO'
 import { MyContext }         from '../Context'
 import Navbar                from '../components/Navigation/Navbar'
 
-const IndexPage = ({ data }) => {
-  const value = useContext(MyContext)
+const IndexPage = React.memo( ({ data }) => {
+  const value = useContext( MyContext )
 
   const initialData = data.curiozitati.edges
+
+  console.log(initialData)
 
   // le facem pe toate LowerCase
   let filter = value.data.searchInput.toLowerCase()
@@ -20,6 +22,11 @@ const IndexPage = ({ data }) => {
   for (let i = 0; i < initialData.length; i++) {
     // txtValue = asta ii titlul la post nostru
     let txtValue = initialData[i].node.imagine.title
+      .replace( /ă/g, 'a' )
+      .replace( /ț/g, 't' )
+      .replace( /ș/g, 's' )
+      .replace( /â/g, 'a' )
+      .replace( /î/g, 'i' )
     if (txtValue.toLowerCase().indexOf( filter ) > -1) {
       filteredData.push( initialData[i] )
     }
@@ -27,27 +34,27 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
-      <Navbar/>
-          <Layout>
-            <SEO
-              title="Curiozități"
-              description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
-            />
-            { filteredData.map( ({ node }) => (
-              <PostCard
-                img={ node.imagine }
-                title={ node.imagine.title }
-                description={ node.imagine.description }
-                avatar={ node.categoria[0].avatar }
-                categoria={ node.categoria[0].denumirea }
-                data={ node.data }
-                key={ node.id }
-              />
-            ) ) }
-          </Layout>
+      <Navbar />
+      <Layout>
+        <SEO
+          title="Curiozități"
+          description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
+        />
+        { filteredData.map( ({ node }) => (
+          <PostCard
+            img={ node.imagine }
+            title={ node.imagine.title }
+            description={ node.imagine.description }
+            avatar={ node.categoria[0].avatar }
+            categoria={ node.categoria[0].denumirea }
+            data={ node.data }
+            key={ node.id }
+          />
+        ) ) }
+      </Layout>
     </>
   )
-}
+} )
 
 export const query = graphql`
 {

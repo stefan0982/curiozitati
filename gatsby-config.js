@@ -34,7 +34,7 @@ module.exports = {
         short_name : `Curiozități`,
         description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral, Ziua în care nu înveți nimic nou este pierdută`,
         start_url  : `/`,
-        background_color: `#141821`,
+        background_color: `#fff`,
         theme_color: `#f6ad55`,
         display    : `standalone`,
         icon: "static/square_logo.png",

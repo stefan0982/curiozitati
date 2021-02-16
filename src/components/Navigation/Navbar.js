@@ -33,7 +33,7 @@ const useStyles = makeStyles( (theme) => (
       borderRadius                  : theme.shape.borderRadius,
       backgroundColor               : fade( theme.palette.common.black, 0.07 ),
       '&:hover'                     : {
-        backgroundColor: fade( theme.palette.common.black, 0.11 ),
+        backgroundColor: fade( theme.palette.common.black, 0.12 ),
       },
       marginLeft                    : 0,
       width                         : '100%',
@@ -200,7 +200,7 @@ export default function Navbar({ search = true }) {
                       input: classes.inputInput,
                     } }
                     inputProps={ { 'aria-label': 'search' } }
-                    onChange={ (e) => set( {
+                    onChange={ e => set( {
                       searchInput: e.target.value,
                     } ) }
                   />
