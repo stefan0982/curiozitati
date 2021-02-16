@@ -36,7 +36,6 @@ export default function Layout({children}) {
         <Grid item xs={12} sm={10} md={6} lg={5} xl={5}>
           {/*<div style={{ height: 5550, border: '1px solid orange', borderRadius: 4 }}/>*/}
           {children}
-
         </Grid>
 
         {/* categorii list rightContainer*/}
@@ -44,7 +43,6 @@ export default function Layout({children}) {
           <Grid item xs={12} md={4} lg={3} xl={3}>
             {/*<div style={{ height: 500, border: '1px solid orange', borderRadius: 4, position: 'fixed', width: 300 }}/>*/}
             <RightContainer/>
-
           </Grid>
         </Hidden>
       </Grid>

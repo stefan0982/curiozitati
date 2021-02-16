@@ -4,19 +4,15 @@ import AppBar               from '@material-ui/core/AppBar'
 import Toolbar              from '@material-ui/core/Toolbar'
 import IconButton           from '@material-ui/core/IconButton'
 import InputBase            from '@material-ui/core/InputBase'
-import MenuItem             from '@material-ui/core/MenuItem'
 import Menu                 from '@material-ui/core/Menu'
 import SearchIcon           from '@material-ui/icons/Search'
+import MoreIcon             from '@material-ui/icons/MoreVert'
+import logo                 from '../../../static/logo.png'
+import { Link }             from 'gatsby'
 import GetAppRoundedIcon    from '@material-ui/icons/GetAppRounded'
-import AccountCircle        from '@material-ui/icons/AccountCircle'
 import InstagramIcon        from '@material-ui/icons/Instagram'
 import FacebookIcon         from '@material-ui/icons/Facebook'
-import MailIcon             from '@material-ui/icons/Mail'
-import NotificationsIcon    from '@material-ui/icons/Notifications'
-import MoreIcon             from '@material-ui/icons/MoreVert'
-
-import logo     from '../../../static/logo.png'
-import { Link } from 'gatsby'
+import { MyContext }        from '../../Context'
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -91,16 +87,11 @@ const useStyles = makeStyles( (theme) => (
   }
 ) )
 
-export default function Navbar() {
+export default function Navbar({ search = true }) {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState( null )
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState( null )
 
   const isMobileMenuOpen = Boolean( mobileMoreAnchorEl )
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl( event.currentTarget )
-  }
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl( null )
@@ -111,6 +102,7 @@ export default function Navbar() {
   }
 
   const mobileMenuId = 'primary-search-account-menu-mobile'
+
   const renderMobileMenu = (
     <Menu
       anchorEl={ mobileMoreAnchorEl }
@@ -127,33 +119,43 @@ export default function Navbar() {
       open={ isMobileMenuOpen }
       onClose={ handleMobileMenuClose }
     >
-      <MenuItem>
+      <a
+        href="https://play.google.com/store/apps/details?id=com.curiozitati"
+        target="_blank"
+        rel="noreferrer"
+        className="disable-link"
+        style={ { color: 'black' } }
+      >
+        <IconButton color="inherit">
+          <GetAppRoundedIcon />
+        </IconButton>
+      </a>
+      <a
+        href="https://www.instagram.com/curiozitati.app/"
+        target="_blank"
+        rel="noreferrer"
+        className="disable-link"
+        style={ { color: 'black' } }
+      >
         <IconButton
           color="inherit"
         >
-          <MailIcon />
+          <InstagramIcon />
         </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
+      </a>
+      <a
+        href="https://www.facebook.com/curiozitatiapp-100527385314276"
+        target="_blank"
+        rel="noreferrer"
+        className="disable-link"
+        style={ { color: 'black' } }
+      >
         <IconButton
           color="inherit"
         >
-          <NotificationsIcon />
+          <FacebookIcon />
         </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={ handleProfileMenuOpen }>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      </a>
     </Menu>
   )
 
@@ -184,73 +186,121 @@ export default function Navbar() {
               />
             </IconButton>
           </Link>
-          {/*<div className={classes.search}>*/ }
-          {/*  <div className={classes.searchIcon}>*/ }
-          {/*    <SearchIcon />*/ }
-          {/*  </div>*/ }
-          {/*  <InputBase*/ }
-          {/*    placeholder="Caută…"*/ }
-          {/*    classes={{*/ }
-          {/*      root: classes.inputRoot,*/ }
-          {/*      input: classes.inputInput,*/ }
-          {/*    }}*/ }
-          {/*    inputProps={{ 'aria-label': 'search' }}*/ }
-          {/*  />*/ }
-          {/*</div>*/ }
+          { search && <MyContext.Consumer>
+            { ({ set }) => {
+              return (
+                <div className={ classes.search }>
+                  <div className={ classes.searchIcon }>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Caută…"
+                    classes={ {
+                      root : classes.inputRoot,
+                      input: classes.inputInput,
+                    } }
+                    inputProps={ { 'aria-label': 'search' } }
+                    onChange={ (e) => set( {
+                      searchInput: e.target.value,
+                    } ) }
+                  />
+                </div>
+              )
+            } }
+          </MyContext.Consumer> }
           <div className={ classes.grow } />
-          {/*<div className={ classes.sectionDesktop }>*/ }
-          <a
-            href="https://play.google.com/store/apps/details?id=com.curiozitati"
-            target="_blank"
-            rel="noreferrer"
-            className="disable-link"
-            style={ { color: 'black' } }
-          >
-            <IconButton color="inherit">
-              <GetAppRoundedIcon />
-            </IconButton>
-          </a>
-          <a
-            href="https://www.instagram.com/curiozitati.app/"
-            target="_blank"
-            rel="noreferrer"
-            className="disable-link"
-            style={ { color: 'black' } }
-          >
+          { search && <div className={ classes.sectionDesktop }>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.curiozitati"
+              target="_blank"
+              rel="noreferrer"
+              className="disable-link"
+              style={ { color: 'black' } }
+            >
+              <IconButton color="inherit">
+                <GetAppRoundedIcon />
+              </IconButton>
+            </a>
+            <a
+              href="https://www.instagram.com/curiozitati.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="disable-link"
+              style={ { color: 'black' } }
+            >
+              <IconButton
+                color="inherit"
+              >
+                <InstagramIcon />
+              </IconButton>
+            </a>
+            <a
+              href="https://www.facebook.com/curiozitatiapp-100527385314276"
+              target="_blank"
+              rel="noreferrer"
+              className="disable-link"
+              style={ { color: 'black' } }
+            >
+              <IconButton
+                color="inherit"
+              >
+                <FacebookIcon />
+              </IconButton>
+            </a>
+          </div> }
+          {!search && <>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.curiozitati"
+              target="_blank"
+              rel="noreferrer"
+              className="disable-link"
+              style={ { color: 'black' } }
+            >
+              <IconButton color="inherit">
+                <GetAppRoundedIcon />
+              </IconButton>
+            </a>
+            <a
+              href="https://www.instagram.com/curiozitati.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="disable-link"
+              style={ { color: 'black' } }
+            >
+              <IconButton
+                color="inherit"
+              >
+                <InstagramIcon />
+              </IconButton>
+            </a>
+            <a
+              href="https://www.facebook.com/curiozitatiapp-100527385314276"
+              target="_blank"
+              rel="noreferrer"
+              className="disable-link"
+              style={ { color: 'black' } }
+            >
+              <IconButton
+                color="inherit"
+              >
+                <FacebookIcon />
+              </IconButton>
+            </a>
+          </>}
+          { search && <div className={ classes.sectionMobile }>
             <IconButton
+              aria-label="show more"
+              aria-controls={ mobileMenuId }
+              aria-haspopup="true"
+              onClick={ handleMobileMenuOpen }
               color="inherit"
             >
-              <InstagramIcon />
+              <MoreIcon />
             </IconButton>
-          </a>
-          <a
-            href="https://www.facebook.com/curiozitatiapp-100527385314276"
-            target="_blank"
-            rel="noreferrer"
-            className="disable-link"
-            style={ { color: 'black' } }
-          >
-            <IconButton
-              color="inherit"
-            >
-              <FacebookIcon />
-            </IconButton>
-          </a>
-          {/*</div>*/ }
-          {/*<div className={ classes.sectionMobile }>*/ }
-          {/*  <IconButton*/ }
-          {/*    aria-label="show more"*/ }
-          {/*    aria-controls={ mobileMenuId }*/ }
-          {/*    aria-haspopup="true"*/ }
-          {/*    onClick={ handleMobileMenuOpen }*/ }
-          {/*    color="inherit"*/ }
-          {/*  >*/ }
-          {/*    <MoreIcon />*/ }
-          {/*  </IconButton>*/ }
-          {/*</div>*/ }
+          </div> }
         </Toolbar>
       </AppBar>
-      {/*{ renderMobileMenu }*/ }
+      { search && renderMobileMenu }
     </div>
   )
 }

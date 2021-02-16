@@ -4,31 +4,35 @@ import { graphql } from 'gatsby'
 import PostCard    from '../components/Feed/PostCard'
 import SEO         from '../components/SEO'
 import '../pages/styles.css'
+import Navbar      from '../components/Navigation/Navbar'
 
-const CategoryTemplate = ({data}) => {
+const CategoryTemplate = ({ data }) => {
   const categoria = data.categoria.denumirea
   const avatar = data.categoria.avatar
   const seoImage = data.categoria.image.fixed.src
   return (
-    <Layout>
-      <SEO
-        image={`https://${seoImage}`}
-        title={categoria}
-        description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
-      />
-
-      { data.curiozitati.edges.map ( ({ node }) => (
-        <PostCard
-          img={ node.imagine }
-          title={ node.imagine.title }
-          description={ node.imagine.description }
-          avatar={avatar}
-          categoria={categoria}
-          data={node.data}
-          key={node.id}
+    <>
+      <Navbar search={false}/>
+      <Layout>
+        <SEO
+          image={ `https://${ seoImage }` }
+          title={ categoria }
+          description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
         />
-      ) ) }
-    </Layout>
+
+        { data.curiozitati.edges.map( ({ node }) => (
+          <PostCard
+            img={ node.imagine }
+            title={ node.imagine.title }
+            description={ node.imagine.description }
+            avatar={ avatar }
+            categoria={ categoria }
+            data={ node.data }
+            key={ node.id }
+          />
+        ) ) }
+      </Layout>
+    </>
   )
 }
 

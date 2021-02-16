@@ -1,35 +1,37 @@
-import React           from 'react'
-import { makeStyles }  from '@material-ui/core/styles'
-import Navbar          from '../components/Navigation/Navbar'
-import Footer          from '../components/Navigation/Footer'
-import { ScrollToTop } from '../components/Navigation/ScrollToTop'
-
+import React                    from 'react'
+import { makeStyles }           from '@material-ui/core/styles'
+import Footer                   from '../components/Navigation/Footer'
+import { ScrollToTop }          from '../components/Navigation/ScrollToTop'
+import ContextProviderComponent from '../Context'
 
 const useStyles = makeStyles( {
   layout: {
-    display: 'flex',
+    display      : 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    minHeight    : '100vh',
   },
-  main: {
-    flex: '1 0 auto'
-  }
+  main  : {
+    flex: '1 0 auto',
+  },
 } )
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
 
   const classes = useStyles()
 
   return (
-    <div className={ classes.layout }>
-      <ScrollToTop showBelow={500}/>
-      <Navbar />
-      <div className={classes.main}>
-        { children }
+    <ContextProviderComponent>
+      <div className={ classes.layout }>
+        <ScrollToTop showBelow={ 1500 } />
+        <div className={ classes.main }>
+          { children }
+        </div>
+        <Footer
+          title={ 'Cele mai interesante curiozități' }
+        />
       </div>
-      <Footer title={"Cele mai interesante"
-                                                 + " curiozități"}/>
-    </div>
+    </ContextProviderComponent>
+
   )
 }
 

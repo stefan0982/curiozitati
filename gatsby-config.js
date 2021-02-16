@@ -4,9 +4,9 @@ require( 'dotenv' ).config( {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://curiozitati.app`,
+    siteUrl: `https://curiozitati.app/`,
     url: 'https://curiozitati.app',
-    titleTemplate: "%s · Cele mai interesante curizități",
+    titleTemplate: "%s · Cele mai interesante curiozități",
     siteTitleAlt: `Cele mai interesante curiozități știați că info știai că`,
     siteHeadline   : `Cele mai interesante curiozități știați că info știai că`,
     title: "Curiozitati",
@@ -30,14 +30,18 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name       : `Cele mai interesante curiozități`,
+        name       : `Investiția în cunoștințe mereu îți va oferi cel mai mare profit`,
         short_name : `Curiozități`,
         description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral, Ziua în care nu înveți nimic nou este pierdută`,
-        start_url  : `/`, background_color: `#141821`, theme_color: `#f6ad55`,
+        start_url  : `/`,
+        background_color: `#141821`,
+        theme_color: `#f6ad55`,
         display    : `standalone`,
-        icon: "static/logo.png",
+        icon: "static/square_logo.png",
+        crossOrigin: `use-credentials`,
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-google-gtag`, options: {
         trackingIds: [

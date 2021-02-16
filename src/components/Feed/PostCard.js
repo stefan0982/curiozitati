@@ -97,10 +97,16 @@ export default function PostCard({
             { stateDescription }
             <span
               color="textPrimary"
+              onKeyDown={() => {
+                setDescription( description )
+                setReadMore( null )
+              }}
               onClick={ () => {
                 setDescription( description )
                 setReadMore( null )
               } }
+              role="button"
+              tabIndex="0"
               style={ {
                 color : 'gray',
                 cursor: 'pointer',
