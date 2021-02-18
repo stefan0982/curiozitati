@@ -12,8 +12,6 @@ const IndexPage = React.memo( ({ data }) => {
 
   const initialData = data.curiozitati.edges
 
-  console.log(initialData)
-
   // le facem pe toate LowerCase
   let filter = value.data.searchInput.toLowerCase()
 
@@ -49,6 +47,7 @@ const IndexPage = React.memo( ({ data }) => {
             categoria={ node.categoria[0].denumirea }
             data={ node.data }
             key={ node.id }
+            linkId={node.linkId}
           />
         ) ) }
       </Layout>
@@ -63,6 +62,7 @@ export const query = graphql`
       node {
         id
         data:createdAt
+        linkId:createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
         imagine {
           fluid {
             ...GatsbyContentfulFluid

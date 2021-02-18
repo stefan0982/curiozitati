@@ -32,10 +32,10 @@ module.exports = {
       options: {
         name       : `Investiția în cunoștințe mereu îți va oferi cel mai mare profit`,
         short_name : `Curiozități`,
-        description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral, Ziua în care nu înveți nimic nou este pierdută`,
+        description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral`,
         start_url  : `/`,
-        background_color: `#fff`,
-        theme_color: `#f6ad55`,
+        background_color: `#455a64`,
+        theme_color: `#ffecb2`,
         display    : `standalone`,
         icon: "static/square_logo.png",
         crossOrigin: `use-credentials`,
@@ -58,6 +58,36 @@ module.exports = {
       }
     },
     `gatsby-theme-material-ui`,
-    `gatsby-plugin-layout`
+    `gatsby-plugin-layout`,
+    {
+      resolve: `gatsby-plugin-modal-routing`,
+      options: {
+        modalProps: {
+          style: {
+            overlay: {
+              position: `fixed`,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: `rgba(0, 0, 0, 0.75)`,
+            },
+            content: {
+              position: `absolute`,
+              border: `none`,
+              background: `none`,
+              padding: 0,
+              top: 0,
+              bottom: 0,
+              right: 0,
+              left: 0,
+              overflow: `auto`,
+              WebkitOverflowScrolling: `touch`,
+            },
+          },
+          contentLabel: `Modal`
+        }
+      }
+    }
   ],
 };

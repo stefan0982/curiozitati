@@ -21,6 +21,17 @@ const useStyles = makeStyles( (theme) => (
       width : '40px',
       height: '40px',
     },
+    modal : {
+      display       : 'flex',
+      alignItems    : 'center',
+      justifyContent: 'center',
+    },
+    paper : {
+      backgroundColor: theme.palette.background.paper,
+      border         : '2px solid #000',
+      boxShadow      : theme.shadows[5],
+      padding        : theme.spacing( 2, 4, 3 ),
+    },
   }
 ) )
 
@@ -31,6 +42,7 @@ export default function PostCard({
   avatar,
   categoria,
   data,
+  linkId,
 }) {
 
   const formatRelativeLocale = {
@@ -87,20 +99,28 @@ export default function PostCard({
           //   </IconButton>
           // }
         />
-        <GatsbyImage
-          className={ classes.media }
-          fluid={ img.fluid }
-          alt={ title }
-        />
+        <Link
+          to={ `/${ linkId }` }
+          state={{
+            modal: true,
+            noScroll: true
+          }}
+        >
+          <GatsbyImage
+            className={ classes.media }
+            fluid={ img.fluid }
+            alt={ title }
+          />
+        </Link>
         <CardContent>
           <div>
             { stateDescription }
             <span
               color="textPrimary"
-              onKeyDown={() => {
+              onKeyDown={ () => {
                 setDescription( description )
                 setReadMore( null )
-              }}
+              } }
               onClick={ () => {
                 setDescription( description )
                 setReadMore( null )
