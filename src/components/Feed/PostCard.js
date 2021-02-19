@@ -99,7 +99,7 @@ export default function PostCard({
           //   </IconButton>
           // }
         />
-        <Link
+        {linkId ? <Link
           to={ `/${ linkId }` }
           state={{
             modal: true,
@@ -111,7 +111,11 @@ export default function PostCard({
             fluid={ img.fluid }
             alt={ title }
           />
-        </Link>
+        </Link> : <GatsbyImage
+          className={ classes.media }
+          fluid={ img.fluid }
+          alt={ title }
+        />}
         <CardContent>
           <div>
             { stateDescription }

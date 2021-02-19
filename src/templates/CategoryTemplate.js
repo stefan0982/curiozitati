@@ -17,7 +17,7 @@ const CategoryTemplate = ({ data }) => {
         <SEO
           image={ `https://${ seoImage }` }
           title={ categoria }
-          description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
+          description="O zi în care nu înveți nimic nou este o zi pierdută"
         />
 
         { data.curiozitati.edges.map( ({ node }) => (

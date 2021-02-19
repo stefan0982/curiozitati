@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://curiozitati.app/`,
     url: 'https://curiozitati.app',
-    titleTemplate: "%s · Cele mai interesante curiozități",
+    titleTemplate: "%s · Cea mai interesantă informație",
     siteTitleAlt: `Cele mai interesante curiozități știați că info știai că`,
     siteHeadline   : `Cele mai interesante curiozități știați că info știai că`,
     title: "Curiozitati",

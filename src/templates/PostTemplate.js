@@ -1,14 +1,25 @@
 import React                   from 'react';
 import { graphql }             from 'gatsby'
-import PostCard                from '../components/Feed/PostCard'
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import GatsbyGramModal         from '../components/GatsbyGramModal'
-import PostModalPage           from '../components/Feed/PostModalPage'
-import PostDetail              from '../components/Postdetail'
+import PostDetail              from '../components/Feed/PostDetail'
+import Navbar                  from '../components/Navigation/Navbar'
+import PostPage                from '../components/Feed/PostPage'
+import SEO                     from '../components/SEO'
 
 export default function PostTemplate({location, data}) {
+  const seoImage = data.info.imagine.fluid.src
+  const seoTitle = data.info.imagine.title
+  const seoDescription = data.info.imagine.description || 'O zi în care nu înveți nimic nou este o zi pierdută'
 
   return (
+    <>
+      <SEO
+        image={ `https://${ seoImage }` }
+        title={ seoTitle }
+        description={seoDescription}
+        article={true}
+      />
     <ModalRoutingContext.Consumer>
       {({ modal }) => {
         return (
@@ -19,19 +30,15 @@ export default function PostTemplate({location, data}) {
               <PostDetail post={data}/>
             </GatsbyGramModal>
           ) : (
-            <PostCard
-              img={ data.info.imagine }
-              title={ data.info.imagine.title }
-              description={ data.info.imagine.description }
-              avatar={ data.info.categoria[0].avatar }
-              categoria={ data.info.categoria[0].denumirea }
-              data={ data.info.data }
-              key={ data.info.linkId }
-            />
+            <>
+              <Navbar search={false}/>
+              <PostPage post={data}/>
+            </>
           )
         )
       }}
     </ModalRoutingContext.Consumer>
+      </>
 
   );
 }
