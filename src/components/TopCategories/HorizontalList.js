@@ -66,8 +66,6 @@ export default function HorizontalList() {
       'resize', resizeWindow )
   }, [] )
 
-  console.log(windowHeight)
-
   let categorySize = windowWidth <= 500 ? '7.5vh' : '7.5vw'
   let containerHeight = windowWidth <= 500 ? '14vh' : '14vw'
 
