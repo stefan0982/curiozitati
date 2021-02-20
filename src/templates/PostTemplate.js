@@ -15,7 +15,7 @@ export default function PostTemplate({location, data}) {
   return (
     <>
       <SEO
-        image={ `https://${ seoImage }` }
+        image={ `${ seoImage }` }
         title={ seoTitle }
         description={seoDescription}
         article={true}

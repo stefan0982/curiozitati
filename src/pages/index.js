@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import './styles.css'
-import PostCard              from '../components/Feed/PostCard'
-import Layout                from '../components/Layout'
-import { graphql }           from 'gatsby'
+import PostCard          from '../components/Feed/PostCard'
+import MainGridContainer from '../components/MainGridContainer'
+import { graphql }       from 'gatsby'
 import SEO                   from '../components/SEO'
 import { MyContext }         from '../Context'
 import Navbar                from '../components/Navigation/Navbar'
@@ -33,7 +33,7 @@ const IndexPage = React.memo( ({ data }) => {
   return (
     <>
       <Navbar />
-      <Layout>
+      <MainGridContainer>
         <SEO
           title="Curiozități"
           description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
@@ -50,7 +50,7 @@ const IndexPage = React.memo( ({ data }) => {
             linkId={node.linkId}
           />
         ) ) }
-      </Layout>
+      </MainGridContainer>
     </>
   )
 } )

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Layout({children}) {
+export default function MainGridContainer({children}) {
   const classes = useStyles();
 
   return (

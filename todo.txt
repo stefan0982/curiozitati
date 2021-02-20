@@ -1,0 +1,12 @@
+ [-] de adauagat animatie la schimbarea paginii anilink
+ [-] de corectat inaltimea la horizontal categorii, cand se deschide tastatura
+ [-] de pus la modal si pe postpage gatsbyImage
+ [-] de actualizat contentul la intrare
+ [-] la schimbarea paginii pozitia la horizontal categorii sa nu se schimbe
+ [-] de imbunatatit seo
+ [v] de pus robots.txt
+ [v] sitemap
+
+
+
+ -- de schimbat logica la cautare

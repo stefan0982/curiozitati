@@ -1,6 +1,6 @@
-import React       from 'react'
-import Layout      from '../components/Layout'
-import { graphql } from 'gatsby'
+import React             from 'react'
+import MainGridContainer from '../components/MainGridContainer'
+import { graphql }       from 'gatsby'
 import PostCard    from '../components/Feed/PostCard'
 import SEO         from '../components/SEO'
 import '../pages/styles.css'
@@ -13,9 +13,9 @@ const CategoryTemplate = ({ data }) => {
   return (
     <>
       <Navbar search={false}/>
-      <Layout>
+      <MainGridContainer>
         <SEO
-          image={ `https://${ seoImage }` }
+          image={ `${ seoImage }` }
           title={ categoria }
           description="O zi în care nu înveți nimic nou este o zi pierdută"
         />
@@ -31,7 +31,7 @@ const CategoryTemplate = ({ data }) => {
             key={ node.id }
           />
         ) ) }
-      </Layout>
+      </MainGridContainer>
     </>
   )
 }

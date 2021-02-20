@@ -15,6 +15,20 @@ import { formatRelative } from 'date-fns'
 import { ro }             from 'date-fns/locale'
 import { Link }           from 'gatsby'
 
+import {
+  FacebookIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  FacebookShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  TwitterIcon,
+  TwitterShareButton, ViberIcon,
+  ViberShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from 'react-share'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -27,9 +41,12 @@ const useStyles = makeStyles((theme) => ({
   dividerInset: {
     margin: `5px 0 0 ${theme.spacing(9)}px`,
   },
+  mediaIcon: {
+    marginRight: 10
+  }
 }));
 
-export default function PostPageListDetails({title, description, avatar, categoria, data}) {
+export default function PostPageListDetails({title, description, avatar, categoria, data, linkId}) {
   const formatRelativeLocale = {
     lastWeek : 'eeee \'la\' kk:mm',
     yesterday: '\'ieri la\' kk:mm',
@@ -45,7 +62,10 @@ export default function PostPageListDetails({title, description, avatar, categor
   }
   const classes = useStyles();
 
-  console.log(avatar)
+  const basicUrl = 'https://curiozitati.app/'
+  const shareUrl = basicUrl + linkId
+
+  console.log(shareUrl)
 
   return (
     <List className={classes.root}>
@@ -69,7 +89,8 @@ export default function PostPageListDetails({title, description, avatar, categor
         </ListItem>
       </>}
       <Divider component="li" />
-      <Link to={`/${slug(categoria)}`} className="disable-link" style={{ color: 'black' }}>
+      <Link to={categoria === 'Toate' ? '/' :`/${slug(categoria)}`}
+       className="disable-link" style={{ color: 'black' }}>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -84,6 +105,51 @@ export default function PostPageListDetails({title, description, avatar, categor
           new Date( data ), Date.now(), { locale } )} />
       </ListItem>
       </Link>
+      <ListItem>
+        <FacebookShareButton
+          url={shareUrl}
+          quote={title}
+          className={classes.mediaIcon}
+        >
+          <FacebookIcon size={36} round />
+        </FacebookShareButton>
+        {/*<FacebookMessengerShareButton*/}
+        {/*  url={shareUrl}*/}
+        {/*  appId="521270401588372"*/}
+        {/*  className={classes.mediaIcon}*/}
+        {/*>*/}
+        {/*  <FacebookMessengerIcon size={36} round />*/}
+        {/*</FacebookMessengerShareButton>*/}
+        <TwitterShareButton
+          url={shareUrl}
+          title={title}
+          className={classes.mediaIcon}
+        >
+          <TwitterIcon size={36} round />
+        </TwitterShareButton>
+        <TelegramShareButton
+          url={shareUrl}
+          title={title}
+          className={classes.mediaIcon}
+        >
+          <TelegramIcon size={36} round />
+        </TelegramShareButton>
+        <WhatsappShareButton
+          url={shareUrl}
+          title={title}
+          separator=":: "
+          className={classes.mediaIcon}
+        >
+          <WhatsappIcon size={36} round />
+        </WhatsappShareButton>
+        <ViberShareButton
+          url={shareUrl}
+          title={title}
+          className={classes.mediaIcon}
+        >
+          <ViberIcon size={36} round />
+        </ViberShareButton>
+      </ListItem>
     </List>
   );
 }

@@ -1,6 +1,5 @@
 import React       from 'react'
 import CardMedia   from '@material-ui/core/CardMedia'
-import GatsbyImage from 'gatsby-image'
 
 export default function PostDetail({ post }) {
 

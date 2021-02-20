@@ -23,8 +23,6 @@ const useStyles = makeStyles( (theme) => (
 export default function SpacingGrid({ post }) {
   const classes = useStyles()
 
-  console.log(post)
-
   return (
     <Grid
       container
@@ -66,6 +64,7 @@ export default function SpacingGrid({ post }) {
               avatar={post.info.categoria[0].avatar}
               categoria={post.info.categoria[0].denumirea}
               data={post.info.data}
+              linkId={post.info.linkId}
             />
           </Grid>
         </Grid>

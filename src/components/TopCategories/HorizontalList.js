@@ -7,7 +7,6 @@ import { Typography }                    from '@material-ui/core'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import GatsbyImage                       from 'gatsby-image'
 import slug                              from 'slug'
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 const query = graphql`
   {
