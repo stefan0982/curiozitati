@@ -12,6 +12,7 @@ import KeyboardArrowLeft
                                           from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight
                                           from '@material-ui/icons/KeyboardArrowRight'
+import PostCard                           from './PostCard'
 
 let posts
 

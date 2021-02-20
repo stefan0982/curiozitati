@@ -1,7 +1,7 @@
 import React                   from 'react';
 import { graphql }             from 'gatsby'
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
-import GatsbyGramModal         from '../components/GatsbyGramModal'
+import GatsbyGramModal         from '../components/Feed/GatsbyGramModal'
 import PostDetail              from '../components/Feed/PostDetail'
 import Navbar                  from '../components/Navigation/Navbar'
 import PostPage                from '../components/Feed/PostPage'
@@ -26,6 +26,7 @@ export default function PostTemplate({location, data}) {
           modal ? (
             <GatsbyGramModal
               location={ location }
+              post={data}
             >
               <PostDetail post={data}/>
             </GatsbyGramModal>
@@ -51,11 +52,16 @@ export const query = graphql`
         data:createdAt
         linkId:createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
         imagine {
-          fluid {
+          fluid(maxWidth: 1080) {
             ...GatsbyContentfulFluid
           }
           title
           description
+        }
+        image:imagine {
+          fixed(width: 1080) {
+            ...GatsbyContentfulFixed
+          }
         }
         categoria {
           avatar {

@@ -22,7 +22,8 @@ const SEO = ({ title, description, image, article }) => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    // FIXME de corectat trebuie se fie `https://${image || defaultImage}`
+    image: `https://${image || ${siteUrl}defaultImage}`,
     url: `${siteUrl}${pathname}`,
   }
 

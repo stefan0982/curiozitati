@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { makeStyles }                 from '@material-ui/core/styles'
 import GridList                       from '@material-ui/core/GridList'
 import IconButton                     from '@material-ui/core/IconButton'
-
 import logo                              from '../../../static/logo.png'
 import { Typography }                    from '@material-ui/core'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import GatsbyImage                       from 'gatsby-image'
 import slug                              from 'slug'
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 const query = graphql`
   {
@@ -51,8 +51,10 @@ export default function HorizontalList() {
   const classes = useStyles()
   const { categorii } = useStaticQuery( query )
   const [windowWidth, setWindowWidth] = useState( 0 )
+  const [windowHeight, setWindowHeight] = useState( 0 )
   let resizeWindow = () => {
     setWindowWidth( window.innerWidth )
+    setWindowHeight( window.innerHeight )
   }
 
   useEffect( () => {
@@ -64,8 +66,15 @@ export default function HorizontalList() {
       'resize', resizeWindow )
   }, [] )
 
-  const categorySize = windowWidth <= 500 ? '7.5vh' : '7.5vw'
-  const containerHeight = windowWidth <= 500 ? '14vh' : '14vw'
+  console.log(windowHeight)
+
+  let categorySize = windowWidth <= 500 ? '7.5vh' : '7.5vw'
+  let containerHeight = windowWidth <= 500 ? '14vh' : '14vw'
+
+  if (windowWidth <= 500 && windowHeight < 500) {
+    containerHeight = '21vh'
+    categorySize = '11vh'
+  }
 
   return (
     <div className={ classes.root }>

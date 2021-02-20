@@ -4,7 +4,7 @@ require( 'dotenv' ).config( {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://curiozitati.app/`,
+    siteUrl: `https://curiozitati.app`,
     url: 'https://curiozitati.app',
     titleTemplate: "%s · Cea mai interesantă informație",
     siteTitleAlt: `Cele mai interesante curiozități știați că info știai că`,
@@ -88,6 +88,8 @@ module.exports = {
           contentLabel: `Modal`
         }
       }
-    }
+    },
+    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-robots-txt'
   ],
 };
