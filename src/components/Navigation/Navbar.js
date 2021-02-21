@@ -1,5 +1,5 @@
-import React                from 'react'
-import { fade, makeStyles } from '@material-ui/core/styles'
+import React, { useEffect, useState } from 'react'
+import { fade, makeStyles }           from '@material-ui/core/styles'
 import AppBar               from '@material-ui/core/AppBar'
 import Toolbar              from '@material-ui/core/Toolbar'
 import IconButton           from '@material-ui/core/IconButton'
@@ -87,7 +87,43 @@ const useStyles = makeStyles( (theme) => (
   }
 ) )
 
+let deferredPrompt;
+
 export default function Navbar({ search = true }) {
+
+  const [installable, setInstallable] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can install the PWA
+      setInstallable(true);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      // Log install to analytics
+      console.log('INSTALL: Success');
+    });
+  }, []);
+
+  const handleInstallClick = (e) => {
+    // Hide the app provided install promotion
+    setInstallable(false);
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  };
+
   const classes = useStyles()
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState( null )
 
@@ -119,17 +155,21 @@ export default function Navbar({ search = true }) {
       open={ isMobileMenuOpen }
       onClose={ handleMobileMenuClose }
     >
-      <a
-        href="https://play.google.com/store/apps/details?id=com.curiozitati"
-        target="_blank"
-        rel="noreferrer"
-        className="disable-link"
-        style={ { color: 'black' } }
-      >
-        <IconButton color="inherit">
-          <GetAppRoundedIcon />
-        </IconButton>
-      </a>
+      {/*<a*/}
+      {/*  href="https://play.google.com/store/apps/details?id=com.curiozitati"*/}
+      {/*  target="_blank"*/}
+      {/*  rel="noreferrer"*/}
+      {/*  className="disable-link"*/}
+      {/*  style={ { color: 'black' } }*/}
+      {/*>*/}
+      {/*  <IconButton color="inherit">*/}
+      {/*    <GetAppRoundedIcon />*/}
+      {/*  </IconButton>*/}
+      {/*</a>*/}
+      {installable &&
+      <IconButton color="inherit" onClick={handleInstallClick}>
+        <GetAppRoundedIcon />
+      </IconButton>}
       <a
         href="https://www.instagram.com/curiozitati.app/"
         target="_blank"
@@ -210,17 +250,21 @@ export default function Navbar({ search = true }) {
           </MyContext.Consumer> }
           <div className={ classes.grow } />
           { search && <div className={ classes.sectionDesktop }>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.curiozitati"
-              target="_blank"
-              rel="noreferrer"
-              className="disable-link"
-              style={ { color: 'black' } }
-            >
-              <IconButton color="inherit">
-                <GetAppRoundedIcon />
-              </IconButton>
-            </a>
+            {/*<a*/}
+            {/*  href="https://play.google.com/store/apps/details?id=com.curiozitati"*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  className="disable-link"*/}
+            {/*  style={ { color: 'black' } }*/}
+            {/*>*/}
+            {/*  <IconButton color="inherit">*/}
+            {/*    <GetAppRoundedIcon />*/}
+            {/*  </IconButton>*/}
+            {/*</a>*/}
+            {installable &&
+            <IconButton color="inherit" onClick={handleInstallClick}>
+              <GetAppRoundedIcon />
+            </IconButton>}
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
@@ -249,17 +293,21 @@ export default function Navbar({ search = true }) {
             </a>
           </div> }
           {!search && <>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.curiozitati"
-              target="_blank"
-              rel="noreferrer"
-              className="disable-link"
-              style={ { color: 'black' } }
-            >
-              <IconButton color="inherit">
-                <GetAppRoundedIcon />
-              </IconButton>
-            </a>
+            {/*<a*/}
+            {/*  href="https://play.google.com/store/apps/details?id=com.curiozitati"*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  className="disable-link"*/}
+            {/*  style={ { color: 'black' } }*/}
+            {/*>*/}
+            {/*  <IconButton color="inherit">*/}
+            {/*    <GetAppRoundedIcon />*/}
+            {/*  </IconButton>*/}
+            {/*</a>*/}
+            {installable &&
+            <IconButton color="inherit" onClick={handleInstallClick}>
+              <GetAppRoundedIcon />
+            </IconButton>}
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
