@@ -65,8 +65,6 @@ export default function PostPageListDetails({title, description, avatar, categor
   const basicUrl = 'https://curiozitati.app/'
   const shareUrl = basicUrl + linkId
 
-  console.log(shareUrl)
-
   return (
     <List className={classes.root}>
       <ListItem>
@@ -113,13 +111,13 @@ export default function PostPageListDetails({title, description, avatar, categor
         >
           <FacebookIcon size={36} round />
         </FacebookShareButton>
-        <FacebookMessengerShareButton
-          url={shareUrl}
-          // appId="521270401588372"
-          className={classes.mediaIcon}
-        >
-          <FacebookMessengerIcon size={36} round />
-        </FacebookMessengerShareButton>
+        {/*<FacebookMessengerShareButton*/}
+        {/*  url={shareUrl}*/}
+        {/*  // appId="521270401588372"*/}
+        {/*  className={classes.mediaIcon}*/}
+        {/*>*/}
+        {/*  <FacebookMessengerIcon size={36} round />*/}
+        {/*</FacebookMessengerShareButton>*/}
         <TwitterShareButton
           url={shareUrl}
           title={title}

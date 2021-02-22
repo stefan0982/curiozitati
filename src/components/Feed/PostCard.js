@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
-import { makeStyles }      from '@material-ui/core/styles'
-import Card                from '@material-ui/core/Card'
-import CardHeader          from '@material-ui/core/CardHeader'
-import CardContent         from '@material-ui/core/CardContent'
-import { Link }            from 'gatsby'
-import GatsbyImage         from 'gatsby-image'
-import slug                from 'slug'
-import { formatRelative }  from 'date-fns'
-import { ro }              from 'date-fns/locale'
+import { makeStyles }     from '@material-ui/core/styles'
+import Card               from '@material-ui/core/Card'
+import CardHeader         from '@material-ui/core/CardHeader'
+import CardContent        from '@material-ui/core/CardContent'
+import { Link }           from 'gatsby'
+import GatsbyImage        from 'gatsby-image'
+import slug               from 'slug'
+import { formatRelative } from 'date-fns'
+import { ro }             from 'date-fns/locale'
+import IconButton         from '@material-ui/core/IconButton'
+import ShareIcon          from '@material-ui/icons/Share';
+import PostShareMenu      from './PostShareMenu'
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -25,13 +28,7 @@ const useStyles = makeStyles( (theme) => (
       display       : 'flex',
       alignItems    : 'center',
       justifyContent: 'center',
-    },
-    paper : {
-      backgroundColor: theme.palette.background.paper,
-      border         : '2px solid #000',
-      boxShadow      : theme.shadows[5],
-      padding        : theme.spacing( 2, 4, 3 ),
-    },
+    }
   }
 ) )
 
@@ -93,11 +90,9 @@ export default function PostCard({
               // className={ classes.avatar }
             />
           </Link> }
-          // action={
-          //   <IconButton aria-label="settings">
-          //     <ShareIcon />
-          //   </IconButton>
-          // }
+          action={
+            <PostShareMenu linkId={linkId} title={title} />
+          }
         />
         {linkId ? <Link
           to={ `/${ linkId }` }
