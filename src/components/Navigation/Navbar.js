@@ -148,17 +148,16 @@ export default function Navbar({ search = true }) {
   }
 
   if(isIOS) {
-    if (installable) {
-      installApp = (
-        <IconButton
-          color="inherit"
-          onClick={ handleInstallClick }
-        >
-          <AppleIcon />
-        </IconButton>
-      )
-    }
+    installApp = (
+      <IconButton
+        color="inherit"
+        onClick={ handleInstallClick }
+      >
+        <AppleIcon />
+      </IconButton>
+    )
   }
+
 
   const classes = useStyles()
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState( null )
@@ -192,20 +191,14 @@ export default function Navbar({ search = true }) {
       onClose={ handleMobileMenuClose }
     >
       {installApp}
-      { installable && <>
+      { installable &&
         <IconButton
           color="inherit"
           onClick={ handleInstallClick }
         >
           <GetAppRoundedIcon />
         </IconButton>
-        <IconButton
-          color="inherit"
-          onClick={ handleInstallClick }
-        >
-          <AppleIcon />
-        </IconButton>
-      </> }
+       }
       <a
         href="https://www.instagram.com/curiozitati.app/"
         target="_blank"
@@ -287,20 +280,14 @@ export default function Navbar({ search = true }) {
           <div className={ classes.grow } />
           { search && <div className={ classes.sectionDesktop }>
             { installApp }
-            { installable && <>
+            { installable &&
               <IconButton
                 color="inherit"
                 onClick={ handleInstallClick }
               >
                 <GetAppRoundedIcon />
               </IconButton>
-              <IconButton
-                color="inherit"
-                onClick={ handleInstallClick }
-              >
-                <AppleIcon />
-              </IconButton>
-            </> }
+             }
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
@@ -330,20 +317,14 @@ export default function Navbar({ search = true }) {
           </div> }
           { !search && <>
             {installApp}
-            { installable && <>
+            { installable &&
               <IconButton
                 color="inherit"
                 onClick={ handleInstallClick }
               >
                 <GetAppRoundedIcon />
               </IconButton>
-              <IconButton
-                color="inherit"
-                onClick={ handleInstallClick }
-              >
-                <AppleIcon />
-              </IconButton>
-            </> }
+               }
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
