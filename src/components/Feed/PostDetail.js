@@ -1,26 +1,20 @@
 import React       from 'react'
 import CardMedia   from '@material-ui/core/CardMedia'
+import GatsbyImage from 'gatsby-image'
 
 export default function PostDetail({ post }) {
 
   return (
     <CardMedia
-      component={'img'}
-      alt={ post.info.imagine.title }
-      image={post.info.imagine.fluid.src}
-      title={ post.info.imagine.title }
-    />
-    // <CardMedia
-    //   // component={ 'img' }
-    //   // image={ post.info.imagine.fluid.src }
-    //   alt="Contemplative Reptile"
-    //   title="Contemplative Reptile"
-    // >
-    //   <GatsbyImage
-    //     fluid={ post.info.imagine.fluid }
-    //     className="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img"
-    //     alt=""
-    //   />
-    // </CardMedia>
+      alt={post.info.imagine.title}
+      title={post.info.imagine.title}
+      style={{ width: '100vw', maxWidth: '80vh' }}
+    >
+      <GatsbyImage
+        fluid={ post.info.imagine.fluid }
+        className="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img"
+        alt={post.info.imagine.title}
+      />
+    </CardMedia>
   )
 }

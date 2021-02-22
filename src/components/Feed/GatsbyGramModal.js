@@ -2,16 +2,21 @@ import React                              from 'react'
 import findIndex                          from 'lodash/findIndex'
 import mousetrap                          from 'mousetrap'
 import { navigate, StaticQuery, graphql } from 'gatsby'
-import Backdrop                           from '@material-ui/core/Backdrop'
-import Fade                               from '@material-ui/core/Fade'
-import Modal                              from '@material-ui/core/Modal'
-import Card                               from '@material-ui/core/Card'
-import CardActions                        from '@material-ui/core/CardActions'
-import Button                             from '@material-ui/core/Button'
+import Backdrop          from '@material-ui/core/Backdrop'
+import Fade              from '@material-ui/core/Fade'
+import Modal             from '@material-ui/core/Modal'
+import Card              from '@material-ui/core/Card'
+import CardActions       from '@material-ui/core/CardActions'
+import Button            from '@material-ui/core/Button'
 import KeyboardArrowLeft
-                                          from '@material-ui/icons/KeyboardArrowLeft'
+                         from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight
-                                          from '@material-ui/icons/KeyboardArrowRight'
+                         from '@material-ui/icons/KeyboardArrowRight'
+import { FacebookShare } from '../SocialShareIcons/FacebookShare'
+import { TwitterShare }  from '../SocialShareIcons/TwitterShare'
+import { ViberShare }    from '../SocialShareIcons/ViberShare'
+import { WhatsappShare } from '../SocialShareIcons/WhatsappShare'
+import { TelegramShare } from '../SocialShareIcons/TelegramShare'
 
 
 let posts
@@ -112,6 +117,8 @@ class GatsbyGramModal extends React.Component {
           if (!posts) {
             posts = data.curiozitati.edges.map( e => e.node )
           }
+          const shareUrl = `https://curiozitati.app/${this.props.post.info.linkId}`
+          const title = this.props.post.info.imagine.title
           // onClick={() => navigate(`/`, { state: { noScroll: true }})} inchide
           // onClick={e => this.next(e)}  urmatoarea
           // onClick={e => this.previous(e)} precedent
@@ -127,19 +134,26 @@ class GatsbyGramModal extends React.Component {
               closeAfterTransition
               BackdropComponent={ Backdrop }
               BackdropProps={ {
-                timeout: 500,
+                timeout: 200,
               } }
             >
               <Fade in={ this.state.isOpen }>
                   <Card style={{ maxWidth: '80vh' }}>
                     { this.props.children }
-                    <CardActions style={{ justifyContent: 'space-between' }} onClick={ e => this.previous( e ) }>
-                      <Button size="small" color="primary">
+                    <CardActions style={{ justifyContent: 'space-between' }} >
+                      <Button size="small" onClick={ e => this.previous( e ) }>
                         <KeyboardArrowLeft />
                       </Button>
-                      <Button size="small" color="primary" onClick={ e => this.next( e ) }>
+                      <Button size="small" onClick={ e => this.next( e ) }>
                         <KeyboardArrowRight />
                       </Button>
+                    </CardActions>
+                    <CardActions style={{ justifyContent: 'center' }}>
+                      <FacebookShare shareUrl={shareUrl} title={title} />
+                      <TwitterShare shareUrl={shareUrl} title={title} />
+                      <ViberShare shareUrl={shareUrl} title={title} />
+                      <WhatsappShare shareUrl={shareUrl} title={title} />
+                      <TelegramShare shareUrl={shareUrl} title={title} />
                     </CardActions>
                   </Card>
               </Fade>

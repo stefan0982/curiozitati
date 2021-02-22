@@ -1,11 +1,12 @@
-import React          from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Grid           from '@material-ui/core/Grid'
+import React               from 'react'
+import { makeStyles }      from '@material-ui/core/styles'
+import Grid                from '@material-ui/core/Grid'
 import CardMedia           from '@material-ui/core/CardMedia'
 import { Card }            from '@material-ui/core'
 import PostPageListDetails from './PostPageListDetails'
 import Button              from '@material-ui/core/Button'
-import { Link } from 'gatsby'
+import { Link }            from 'gatsby'
+import GatsbyImage         from 'gatsby-image'
 const useStyles = makeStyles( (theme) => (
   {
     root : {
@@ -47,12 +48,13 @@ export default function SpacingGrid({ post }) {
             md={ 6 }
           >
             <Card>
-              <CardMedia
-                component={ 'img' }
-                alt="Contemplative Reptile"
-                image={ post.info.imagine.fluid.src }
-                title="Contemplative Reptile"
-              />
+              <GatsbyImage fluid={post.info.imagine.fluid} />
+              {/*<CardMedia*/}
+              {/*  component={ 'img' }*/}
+              {/*  alt="Contemplative Reptile"*/}
+              {/*  image={ post.info.imagine.fluid.src }*/}
+              {/*  title="Contemplative Reptile"*/}
+              {/*/>*/}
             </Card>
           </Grid>
           <Grid

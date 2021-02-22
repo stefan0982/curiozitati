@@ -148,7 +148,7 @@ export default function Navbar({ search = true }) {
     )
   }
 
-  if(isIOS && installable) {
+  if(isIOS || installable) {
     installApp = (
       <IconButton
         color="inherit"

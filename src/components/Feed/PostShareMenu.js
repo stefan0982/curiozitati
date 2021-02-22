@@ -8,18 +8,11 @@ import MenuItem          from '@material-ui/core/MenuItem'
 import MenuList          from '@material-ui/core/MenuList'
 import { makeStyles }    from '@material-ui/core/styles'
 import ShareIcon         from '@material-ui/icons/Share'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  TelegramIcon,
-  TelegramShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-  ViberIcon,
-  ViberShareButton,
-  WhatsappIcon,
-  WhatsappShareButton,
-}                        from 'react-share'
+import { FacebookShare } from '../SocialShareIcons/FacebookShare'
+import { TelegramShare } from '../SocialShareIcons/TelegramShare'
+import { TwitterShare }  from '../SocialShareIcons/TwitterShare'
+import { WhatsappShare } from '../SocialShareIcons/WhatsappShare'
+import { ViberShare }    from '../SocialShareIcons/ViberShare'
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -112,60 +105,19 @@ export default function PostShareMenu({
                   onKeyDown={ handleListKeyDown }
                 >
                   <MenuItem onClick={ handleClose }>
-                    <FacebookShareButton
-                      url={ shareUrl }
-                      quote={ title }
-                    >
-                      <FacebookIcon
-                        size={ 36 }
-                        round
-                      />
-                    </FacebookShareButton>
+                    <FacebookShare shareUrl={shareUrl} title={title} />
                   </MenuItem>
                   <MenuItem onClick={ handleClose }>
-                    <TelegramShareButton
-                      url={ shareUrl }
-                      title={ title }
-                    >
-                      <TelegramIcon
-                        size={ 36 }
-                        round
-                      />
-                    </TelegramShareButton></MenuItem>
-                  <MenuItem onClick={ handleClose }>
-                    <TwitterShareButton
-                      url={ shareUrl }
-                      title={ title }
-                    >
-                      <TwitterIcon
-                        size={ 36 }
-                        round
-                      />
-                    </TwitterShareButton>
+                    <TelegramShare shareUrl={shareUrl} title={title} />
                   </MenuItem>
                   <MenuItem onClick={ handleClose }>
-                    <WhatsappShareButton
-                      url={ shareUrl }
-                      title={ title }
-                      separator=":: "
-                    >
-                      <WhatsappIcon
-                        size={ 36 }
-                        round
-                      />
-                    </WhatsappShareButton>
+                    <TwitterShare shareUrl={shareUrl} title={title} />
                   </MenuItem>
                   <MenuItem onClick={ handleClose }>
-                    <ViberShareButton
-                      url={ shareUrl }
-                      title={ title }
-                      className={ classes.mediaIcon }
-                    >
-                      <ViberIcon
-                        size={ 36 }
-                        round
-                      />
-                    </ViberShareButton>
+                    <WhatsappShare shareUrl={shareUrl} title={title} />
+                  </MenuItem>
+                  <MenuItem onClick={ handleClose }>
+                    <ViberShare shareUrl={shareUrl} title={title}/>
                   </MenuItem>
                 </MenuList>
               </ClickAwayListener>

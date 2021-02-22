@@ -8,8 +8,6 @@ import GatsbyImage        from 'gatsby-image'
 import slug               from 'slug'
 import { formatRelative } from 'date-fns'
 import { ro }             from 'date-fns/locale'
-import IconButton         from '@material-ui/core/IconButton'
-import ShareIcon          from '@material-ui/icons/Share';
 import PostShareMenu      from './PostShareMenu'
 
 const useStyles = makeStyles( (theme) => (
