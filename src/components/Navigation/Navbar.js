@@ -13,11 +13,10 @@ import GetAppRoundedIcon              from '@material-ui/icons/GetAppRounded'
 import InstagramIcon                  from '@material-ui/icons/Instagram'
 import FacebookIcon                   from '@material-ui/icons/Facebook'
 import AndroidRoundedIcon             from '@material-ui/icons/AndroidRounded'
-import SystemUpdateAltRoundedIcon from '@material-ui/icons/SystemUpdateAltRounded';
 import AppleIcon                      from '@material-ui/icons/Apple'
 import { MyContext }                  from '../../Context'
 
-import {isAndroid, isIOS, isWindows, isMacOs} from 'react-device-detect';
+import {isAndroid, isIOS} from 'react-device-detect';
 
 let installApp
 
@@ -148,27 +147,18 @@ export default function Navbar({ search = true }) {
     )
   }
 
-  if(isIOS || installable) {
-    installApp = (
-      <IconButton
-        color="inherit"
-        onClick={ handleInstallClick }
-      >
-        <AppleIcon />
-      </IconButton>
-    )
+  if(isIOS) {
+    if (installable) {
+      installApp = (
+        <IconButton
+          color="inherit"
+          onClick={ handleInstallClick }
+        >
+          <AppleIcon />
+        </IconButton>
+      )
+    }
   }
-
-  // if(isWindows && isMacOs) {
-  //   installApp = (
-  //     <IconButton
-  //       color="inherit"
-  //       onClick={ handleInstallClick }
-  //     >
-  //       <SystemUpdateAltRoundedIcon />
-  //     </IconButton>
-  //   )
-  // }
 
   const classes = useStyles()
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState( null )
