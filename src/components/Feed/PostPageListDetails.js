@@ -17,8 +17,6 @@ import { Link }           from 'gatsby'
 
 import {
   FacebookIcon,
-  FacebookMessengerIcon,
-  FacebookMessengerShareButton,
   FacebookShareButton,
   TelegramIcon,
   TelegramShareButton,

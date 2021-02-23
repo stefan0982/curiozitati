@@ -4,9 +4,7 @@ import AppBar                         from '@material-ui/core/AppBar'
 import Toolbar                        from '@material-ui/core/Toolbar'
 import IconButton                     from '@material-ui/core/IconButton'
 import InputBase                      from '@material-ui/core/InputBase'
-import Menu                           from '@material-ui/core/Menu'
 import SearchIcon                     from '@material-ui/icons/Search'
-import MoreIcon                       from '@material-ui/icons/MoreVert'
 import logo                           from '../../../static/logo.png'
 import { Link }                       from 'gatsby'
 import GetAppRoundedIcon              from '@material-ui/icons/GetAppRounded'
@@ -16,7 +14,9 @@ import AndroidRoundedIcon             from '@material-ui/icons/AndroidRounded'
 import AppleIcon                      from '@material-ui/icons/Apple'
 import { MyContext }                  from '../../Context'
 
-import {isAndroid, isIOS} from 'react-device-detect';
+import { isAndroid, isIOS } from 'react-device-detect'
+import { MenuItem }         from '@material-ui/core'
+import NavbarMobileMenu     from './NavbarMobileMenu'
 
 let installApp
 
@@ -131,7 +131,7 @@ export default function Navbar({ search = true }) {
     } )
   }
 
-  if(isAndroid) {
+  if (isAndroid) {
     installApp = (
       <a
         href="https://play.google.com/store/apps/details?id=com.curiozitati"
@@ -140,14 +140,14 @@ export default function Navbar({ search = true }) {
         className="disable-link"
         style={ { color: 'black' } }
       >
-        <IconButton color="inherit">
+        <MenuItem>
           <AndroidRoundedIcon />
-        </IconButton>
+        </MenuItem>
       </a>
     )
   }
 
-  if(isIOS) {
+  if (isIOS) {
     installApp = (
       <IconButton
         color="inherit"
@@ -158,75 +158,7 @@ export default function Navbar({ search = true }) {
     )
   }
 
-
   const classes = useStyles()
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState( null )
-
-  const isMobileMenuOpen = Boolean( mobileMoreAnchorEl )
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl( null )
-  }
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl( event.currentTarget )
-  }
-
-  const mobileMenuId = 'primary-search-account-menu-mobile'
-
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={ mobileMoreAnchorEl }
-      anchorOrigin={ {
-        vertical  : 'top',
-        horizontal: 'right',
-      } }
-      id={ mobileMenuId }
-      keepMounted
-      transformOrigin={ {
-        vertical  : 'top',
-        horizontal: 'right',
-      } }
-      open={ isMobileMenuOpen }
-      onClose={ handleMobileMenuClose }
-    >
-      {installApp}
-      { installable &&
-        <IconButton
-          color="inherit"
-          onClick={ handleInstallClick }
-        >
-          <GetAppRoundedIcon />
-        </IconButton>
-       }
-      <a
-        href="https://www.instagram.com/curiozitati.app/"
-        target="_blank"
-        rel="noreferrer"
-        className="disable-link"
-        style={ { color: 'black' } }
-      >
-        <IconButton
-          color="inherit"
-        >
-          <InstagramIcon />
-        </IconButton>
-      </a>
-      <a
-        href="https://www.facebook.com/curiozitatiapp-100527385314276"
-        target="_blank"
-        rel="noreferrer"
-        className="disable-link"
-        style={ { color: 'black' } }
-      >
-        <IconButton
-          color="inherit"
-        >
-          <FacebookIcon />
-        </IconButton>
-      </a>
-    </Menu>
-  )
 
   return (
     <div>
@@ -280,14 +212,12 @@ export default function Navbar({ search = true }) {
           <div className={ classes.grow } />
           { search && <div className={ classes.sectionDesktop }>
             { installApp }
-            { installable &&
-              <IconButton
-                color="inherit"
-                onClick={ handleInstallClick }
-              >
-                <GetAppRoundedIcon />
-              </IconButton>
-             }
+            { installable && <IconButton
+              color="inherit"
+              onClick={ handleInstallClick }
+            >
+              <GetAppRoundedIcon />
+            </IconButton> }
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
@@ -316,15 +246,13 @@ export default function Navbar({ search = true }) {
             </a>
           </div> }
           { !search && <>
-            {installApp}
-            { installable &&
-              <IconButton
-                color="inherit"
-                onClick={ handleInstallClick }
-              >
-                <GetAppRoundedIcon />
-              </IconButton>
-               }
+            { installApp }
+            { installable && <IconButton
+              color="inherit"
+              onClick={ handleInstallClick }
+            >
+              <GetAppRoundedIcon />
+            </IconButton> }
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
@@ -353,19 +281,16 @@ export default function Navbar({ search = true }) {
             </a>
           </> }
           { search && <div className={ classes.sectionMobile }>
-            <IconButton
-              aria-label="show more"
-              aria-controls={ mobileMenuId }
-              aria-haspopup="true"
-              onClick={ handleMobileMenuOpen }
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
+            <NavbarMobileMenu>
+              { installApp }
+              { installable &&
+              <MenuItem onClick={ handleInstallClick }>
+                <GetAppRoundedIcon />
+              </MenuItem> }
+            </NavbarMobileMenu>
           </div> }
         </Toolbar>
       </AppBar>
-      { search && renderMobileMenu }
     </div>
   )
 }
