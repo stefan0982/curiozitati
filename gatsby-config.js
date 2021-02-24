@@ -41,7 +41,14 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        workboxConfig: {
+          skipWaiting: false,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-google-gtag`, options: {
         trackingIds: [
