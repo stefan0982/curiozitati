@@ -161,9 +161,9 @@ export default function Navbar({ search = true }) {
   const classes = useStyles()
 
   return (
-    <div>
+    <>
       <AppBar
-        position="static"
+        position="fixed"
         color="transparent"
         className="header"
       >
@@ -291,6 +291,7 @@ export default function Navbar({ search = true }) {
           </div> }
         </Toolbar>
       </AppBar>
-    </div>
+      <Toolbar/>
+    </>
   )
 }
