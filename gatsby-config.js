@@ -28,28 +28,6 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        name       : `Investiția în cunoștințe mereu îți va oferi cel mai mare profit`,
-        short_name : `Curiozități`,
-        description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral`,
-        start_url  : `/`,
-        background_color: `#455a64`,
-        theme_color: `#ffecb2`,
-        display    : `standalone`,
-        icon: "static/square_logo.png",
-        crossOrigin: `use-credentials`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        workboxConfig: {
-          skipWaiting: false,
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`, options: {
         trackingIds: [
           process.env.GA_TRACKING_ID,
@@ -98,5 +76,20 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name       : `Investiția în cunoștințe mereu îți va oferi cel mai mare profit`,
+        short_name : `Curiozități`,
+        description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, dezvoltă-te multilateral`,
+        start_url  : `/`,
+        background_color: `#455a64`,
+        theme_color: `#ffecb2`,
+        display    : `standalone`,
+        icon: "static/square_logo.png",
+        crossOrigin: `use-credentials`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };
