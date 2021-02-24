@@ -6,6 +6,7 @@ import { graphql }           from 'gatsby'
 import SEO                   from '../components/SEO'
 import { MyContext }         from '../Context'
 import Navbar                from '../components/Navigation/Navbar'
+import UpdateButton          from '../PwaButton'
 
 const IndexPage = React.memo( ({ data }) => {
   const value = useContext( MyContext )
@@ -38,6 +39,7 @@ const IndexPage = React.memo( ({ data }) => {
           title="Curiozități"
           description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
         />
+        <UpdateButton/>
         { filteredData.map( ({ node }) => (
           <PostCard
             img={ node.imagine }
