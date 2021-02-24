@@ -23,6 +23,6 @@ export const onServiceWorkerUpdateFound = () => {
   window.location.reload()
 }
 
-export const onClientEntry = () => window.location.reload()
+export const onClientEntry = () => console.log('onClientEntry')
 
-export const onInitialClientRender = () => window.location.reload()
+export const onInitialClientRender = () => console.log('onInitialClientRender')
