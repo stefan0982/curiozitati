@@ -77,16 +77,6 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
     {
-      resolve: "gatsby-plugin-tidy",
-      options: {
-        cleanPublic: false,
-        cleanCache: true,
-        removeHashes: true,
-        removeArtifacts: false,
-        noJsMap: true,
-      }
-    },
-    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name       : `Investiția în cunoștințe mereu îți va oferi cel mai mare profit`,
@@ -101,5 +91,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-  ],
+  ]
 };

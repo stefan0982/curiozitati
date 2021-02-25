@@ -10,3 +10,4 @@
 
 
  -- de schimbat logica la cautare
+ -- de incercat cu rect native web view
