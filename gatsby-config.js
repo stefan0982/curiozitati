@@ -79,7 +79,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-tidy",
       options: {
-        cleanPublic: true,
+        cleanPublic: false,
         cleanCache: true,
         removeHashes: true,
         removeArtifacts: false,
