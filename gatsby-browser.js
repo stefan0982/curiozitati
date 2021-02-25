@@ -8,6 +8,6 @@ export const onServiceWorkerUpdateReady = () => {
   }
 }
 
-export const shouldUpdateScroll = () => {
-  return false;
-};
+// export const shouldUpdateScroll = () => {
+//   return false;
+// };

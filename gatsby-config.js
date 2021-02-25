@@ -14,7 +14,7 @@ module.exports = {
     siteLanguage   : `ro`,
     author: `stefan`,
     image: `/banner.png`,
-    twitterUsername: '@curiozitati'
+    twitterUsername: '@curiozitati2'
   },
   plugins: [
     {
@@ -90,6 +90,7 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`
   ]
 };
