@@ -77,6 +77,14 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
     {
+      resolve: "gatsby-plugin-page-progress",
+      options: {
+        excludePaths: ["/"],
+        height: 2,
+        color: `#ff7d00`,
+      }
+    },
+    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name       : `Investiția în cunoștințe mereu îți va oferi cel mai mare profit`,
