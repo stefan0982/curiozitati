@@ -55,12 +55,9 @@ const IndexPage = React.memo( ({ data }) => {
   )
 } )
 
-let limit = 10
-let skip = 0
-
 export const query = graphql`
 {
-  curiozitati: allContentfulCuriozitati(sort: {fields: imagine___createdAt, order: DESC}, limit: 10, skip: 0) {
+  curiozitati: allContentfulCuriozitati(sort: {fields: imagine___createdAt, order: DESC}) {
     edges {
       node {
         id
