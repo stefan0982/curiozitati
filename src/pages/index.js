@@ -55,14 +55,17 @@ const IndexPage = React.memo( ({ data }) => {
   )
 } )
 
+let limit = 10
+let skip = 0
+
 export const query = graphql`
 {
-  curiozitati: allContentfulCuriozitati(sort: {fields: imagine___createdAt, order: DESC}) {
+  curiozitati: allContentfulCuriozitati(sort: {fields: imagine___createdAt, order: DESC}, limit: 10, skip: 0) {
     edges {
       node {
         id
-        data:createdAt
-        linkId:createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
+        data: createdAt
+        linkId: createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
         imagine {
           fluid {
             ...GatsbyContentfulFluid
@@ -82,6 +85,7 @@ export const query = graphql`
     }
   }
 }
+
 `
 
 export default IndexPage
