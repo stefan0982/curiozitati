@@ -8,22 +8,46 @@ exports.createPages = async ({
   const { createPage } = actions
   const { data } = await graphql( `
     {
-      categories:allContentfulCategorii(filter: {denumirea: {ne: "Toate"}}) {
-        edges {
-          node {
-            denumirea
+  categories: allContentfulCategorii(filter: {denumirea: {ne: "Toate"}}) {
+    edges {
+      node {
+        denumirea
+      }
+    }
+  }
+  curiozitati: allContentfulCuriozitati(sort: {fields: imagine___createdAt, order: DESC}) {
+    edges {
+      node {
+        id
+        data: createdAt
+        linkId: createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
+        imagine {
+          fluid {
+            base64
+            aspectRatio
+            src
+            srcSet
+            sizes
           }
+          title
+          description
+        }
+        categoria {
+          avatar {
+            fixed(width: 40, height: 40) {
+              width
+              height
+              src
+              srcSet
+            }
+          }
+          denumirea
         }
       }
-      curiozitati:allContentfulCuriozitati {
-        edges {
-          node {
-            id  
-            data:createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
-          }
-        }
-  }
     }
+  }
+}
+
    ` )
   data.categories.edges.forEach( edge => {
     const categorySlug = slug( edge.node.denumirea )
@@ -36,7 +60,7 @@ exports.createPages = async ({
     } )
   } )
   data.curiozitati.edges.forEach( edge => {
-    const curiozitateSlug = slug( edge.node.data )
+    const curiozitateSlug = slug( edge.node.linkId )
     createPage( {
       path     : `/${ curiozitateSlug }`,
       component: path.resolve( `./src/templates/PostTemplate.js` ),
@@ -45,6 +69,14 @@ exports.createPages = async ({
       },
     } )
   } )
+
+  createPage({
+    path: `/`,
+    component: path.resolve(`./src/templates/InfinityScroll.js`),
+    context: {
+      data: data.curiozitati.edges
+    }
+  })
 }
 
 

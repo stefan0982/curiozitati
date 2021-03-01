@@ -56,6 +56,7 @@ export default function HorizontalList() {
     setWindowHeight( window.innerHeight )
   }
 
+
   useEffect( () => {
     resizeWindow()
     typeof window !== `undefined` && window.addEventListener( 'resize',
