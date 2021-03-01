@@ -3,6 +3,7 @@ import Navbar                         from '../components/Navigation/Navbar'
 import MainGridContainer              from '../components/MainGridContainer'
 import SEO                            from '../components/SEO'
 import PostCard                       from '../components/Feed/PostCard'
+import './styles.css'
 
 const InfinityScroll = ({ pageContext: { data } }) => {
   const [hasMore, setMore] = useState( data.length > 7 )
@@ -38,7 +39,7 @@ const InfinityScroll = ({ pageContext: { data } }) => {
 
   return (
     <>
-      <Navbar search={false}/>
+      <Navbar search/>
       <MainGridContainer>
         <SEO
           title="Curiozități"

@@ -3,7 +3,7 @@ import MainGridContainer from '../components/MainGridContainer'
 import { graphql }       from 'gatsby'
 import PostCard    from '../components/Feed/PostCard'
 import SEO         from '../components/SEO'
-import '../pages/styles.css'
+import './styles.css'
 import Navbar      from '../components/Navigation/Navbar'
 
 const CategoryTemplate = ({ data }) => {

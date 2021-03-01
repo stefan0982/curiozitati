@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 
-import '../../pages/styles.css'
+import '../../templates/styles.css'
 import GatsbyImage        from 'gatsby-image'
 import slug               from 'slug'
 import { formatRelative } from 'date-fns'

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import '../pages/styles.css'
+import './styles.css'
 import PostCard              from '../components/Feed/PostCard'
 import MainGridContainer     from '../components/MainGridContainer'
 import { graphql }           from 'gatsby'

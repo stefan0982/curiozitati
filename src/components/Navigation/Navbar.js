@@ -7,18 +7,15 @@ import InputBase                      from '@material-ui/core/InputBase'
 import SearchIcon                     from '@material-ui/icons/Search'
 import logo                           from '../../../static/logo.png'
 import { Link }                       from 'gatsby'
-import GetAppRoundedIcon              from '@material-ui/icons/GetAppRounded'
 import InstagramIcon                  from '@material-ui/icons/Instagram'
 import FacebookIcon                   from '@material-ui/icons/Facebook'
 import AndroidRoundedIcon             from '@material-ui/icons/AndroidRounded'
-import AppleIcon                      from '@material-ui/icons/Apple'
 import { MyContext }                  from '../../Context'
 
-import { isAndroid, isIOS } from 'react-device-detect'
+import { isAndroid } from 'react-device-detect'
 import { MenuItem }         from '@material-ui/core'
 import NavbarMobileMenu     from './NavbarMobileMenu'
 
-let installApp
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -93,46 +90,10 @@ const useStyles = makeStyles( (theme) => (
   }
 ) )
 
-let deferredPrompt
 
 export default function Navbar({ search = true }) {
 
-  const [installable, setInstallable] = useState( false )
-
-  useEffect( () => {
-    window.addEventListener( 'beforeinstallprompt', (e) => {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault()
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e
-      // Update UI notify the user they can install the PWA
-      setInstallable( true )
-    } )
-
-    window.addEventListener( 'appinstalled', () => {
-      // Log install to analytics
-      console.log( 'INSTALL: Success' )
-    } )
-  }, [] )
-
-  const handleInstallClick = (e) => {
-    // Hide the app provided install promotion
-    setInstallable( false )
-    // Show the install prompt
-    deferredPrompt.prompt()
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then( (choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log( 'User accepted the install prompt' )
-      }
-      else {
-        console.log( 'User dismissed the install prompt' )
-      }
-    } )
-  }
-
-  if (isAndroid) {
-    installApp = (
+    const installApp = (
       <a
         href="https://play.google.com/store/apps/details?id=com.curiozitati"
         target="_blank"
@@ -140,23 +101,13 @@ export default function Navbar({ search = true }) {
         className="disable-link"
         style={ { color: 'black' } }
       >
-        <MenuItem>
+        <IconButton
+          color="inherit"
+        >
           <AndroidRoundedIcon />
-        </MenuItem>
+        </IconButton>
       </a>
     )
-  }
-
-  if (isIOS) {
-    installApp = (
-      <IconButton
-        color="inherit"
-        onClick={ handleInstallClick }
-      >
-        <AppleIcon />
-      </IconButton>
-    )
-  }
 
   const classes = useStyles()
 
@@ -212,12 +163,6 @@ export default function Navbar({ search = true }) {
           <div className={ classes.grow } />
           { search && <div className={ classes.sectionDesktop }>
             { installApp }
-            { installable && <IconButton
-              color="inherit"
-              onClick={ handleInstallClick }
-            >
-              <GetAppRoundedIcon />
-            </IconButton> }
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
@@ -247,12 +192,6 @@ export default function Navbar({ search = true }) {
           </div> }
           { !search && <>
             { installApp }
-            { installable && <IconButton
-              color="inherit"
-              onClick={ handleInstallClick }
-            >
-              <GetAppRoundedIcon />
-            </IconButton> }
             <a
               href="https://www.instagram.com/curiozitati.app/"
               target="_blank"
@@ -283,10 +222,6 @@ export default function Navbar({ search = true }) {
           { search && <div className={ classes.sectionMobile }>
             <NavbarMobileMenu>
               { installApp }
-              { installable &&
-              <MenuItem onClick={ handleInstallClick }>
-                <GetAppRoundedIcon />
-              </MenuItem> }
             </NavbarMobileMenu>
           </div> }
         </Toolbar>

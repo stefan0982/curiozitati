@@ -74,6 +74,7 @@ export default function NavbarMobileMenu({children}) {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     {children}
+                    // TODO fix menu item on install app
                     <a
                       href="https://www.instagram.com/curiozitati.app/"
                       target="_blank"
