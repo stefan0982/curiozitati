@@ -70,13 +70,13 @@ exports.createPages = async ({
     } )
   } )
 
-  createPage({
-    path: `/`,
-    component: path.resolve(`./src/templates/InfinityScroll.js`),
-    context: {
-      data: data.curiozitati.edges
-    }
-  })
+  createPage( {
+    path     : `/`,
+    component: path.resolve( `./src/templates/InfinityScroll.js` ),
+    context  : {
+      data: data.curiozitati.edges,
+    },
+  } )
 }
 
 

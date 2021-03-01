@@ -4,6 +4,7 @@ import MainGridContainer              from '../components/MainGridContainer'
 import SEO                            from '../components/SEO'
 import PostCard                       from '../components/Feed/PostCard'
 import './styles.css'
+import Search                         from '../components/Search'
 
 const InfinityScroll = ({ pageContext: { data } }) => {
   const [hasMore, setMore] = useState( data.length > 7 )
@@ -57,6 +58,7 @@ const InfinityScroll = ({ pageContext: { data } }) => {
             linkId={node.linkId}
           />
         ) ) }
+        {/*<Search/>*/}
       </MainGridContainer>
     </>
   )
