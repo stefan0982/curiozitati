@@ -52,6 +52,8 @@ export default function NavbarMobileMenu({children}) {
     prevOpen.current = open;
   }, [open]);
 
+  // TODO fix menu item on install app instead of iconButton
+
   return (
     <div className={classes.root}>
       <div>
@@ -70,11 +72,11 @@ export default function NavbarMobileMenu({children}) {
               {...TransitionProps}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
+
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     {children}
-                    // TODO fix menu item on install app
                     <a
                       href="https://www.instagram.com/curiozitati.app/"
                       target="_blank"

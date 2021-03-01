@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { fade, makeStyles }           from '@material-ui/core/styles'
 import AppBar                         from '@material-ui/core/AppBar'
 import Toolbar                        from '@material-ui/core/Toolbar'
@@ -11,9 +11,6 @@ import InstagramIcon                  from '@material-ui/icons/Instagram'
 import FacebookIcon                   from '@material-ui/icons/Facebook'
 import AndroidRoundedIcon             from '@material-ui/icons/AndroidRounded'
 import { MyContext }                  from '../../Context'
-
-import { isAndroid } from 'react-device-detect'
-import { MenuItem }         from '@material-ui/core'
 import NavbarMobileMenu     from './NavbarMobileMenu'
 
 

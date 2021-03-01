@@ -39,7 +39,7 @@ const InfinityScroll = ({ pageContext: { data } }) => {
 
   return (
     <>
-      <Navbar search/>
+      <Navbar search={false}/>
       <MainGridContainer>
         <SEO
           title="Curiozități"
