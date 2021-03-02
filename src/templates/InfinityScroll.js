@@ -4,7 +4,6 @@ import MainGridContainer              from '../components/MainGridContainer'
 import SEO                            from '../components/SEO'
 import PostCard                       from '../components/Feed/PostCard'
 import './styles.css'
-import Search                         from '../components/Search'
 
 const InfinityScroll = ({ pageContext: { data } }) => {
   const [hasMore, setMore] = useState( data.length > 7 )
@@ -36,13 +35,12 @@ const InfinityScroll = ({ pageContext: { data } }) => {
     }
   }, [hasMore, currentList] )
 
-  console.log( hasMore, currentList )
-
   return (
     <>
       <Navbar search={false}/>
       <MainGridContainer>
         <SEO
+          article
           title="Curiozități"
           description="O zi în care nu înveți nimic nou este o zi pierdută, deaceea află cele mai interesante curiozități aici"
         />
@@ -58,7 +56,6 @@ const InfinityScroll = ({ pageContext: { data } }) => {
             linkId={node.linkId}
           />
         ) ) }
-        {/*<Search/>*/}
       </MainGridContainer>
     </>
   )

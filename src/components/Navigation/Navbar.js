@@ -1,17 +1,22 @@
 import React from 'react'
 import { fade, makeStyles }           from '@material-ui/core/styles'
 import AppBar                         from '@material-ui/core/AppBar'
-import Toolbar                        from '@material-ui/core/Toolbar'
-import IconButton                     from '@material-ui/core/IconButton'
-import InputBase                      from '@material-ui/core/InputBase'
-import SearchIcon                     from '@material-ui/icons/Search'
-import logo                           from '../../../static/logo.png'
-import { Link }                       from 'gatsby'
-import InstagramIcon                  from '@material-ui/icons/Instagram'
-import FacebookIcon                   from '@material-ui/icons/Facebook'
-import AndroidRoundedIcon             from '@material-ui/icons/AndroidRounded'
-import { MyContext }                  from '../../Context'
-import NavbarMobileMenu     from './NavbarMobileMenu'
+import Toolbar            from '@material-ui/core/Toolbar'
+import IconButton         from '@material-ui/core/IconButton'
+import InputBase          from '@material-ui/core/InputBase'
+import SearchIcon         from '@material-ui/icons/Search'
+import logo               from '../../../static/logo.png'
+import { Link }           from 'gatsby'
+import InstagramIcon      from '@material-ui/icons/Instagram'
+import FacebookIcon       from '@material-ui/icons/Facebook'
+import AndroidRoundedIcon from '@material-ui/icons/AndroidRounded'
+import { MyContext }      from '../../Context'
+import NavbarMobileMenu   from './NavbarMobileMenu'
+
+// search import
+import Search             from '../search'
+const searchIndices = [{ name: `Curiozitati`, title: `Curiozitati` }]
+
 
 
 const useStyles = makeStyles( (theme) => (
@@ -173,19 +178,20 @@ export default function Navbar({ search = true }) {
                 <InstagramIcon />
               </IconButton>
             </a>
-            <a
-              href="https://www.facebook.com/curiozitatiapp-100527385314276"
-              target="_blank"
-              rel="noreferrer"
-              className="disable-link"
-              style={ { color: 'black' } }
-            >
-              <IconButton
-                color="inherit"
-              >
-                <FacebookIcon />
-              </IconButton>
-            </a>
+            {/*<a*/}
+            {/*  href="https://www.facebook.com/curiozitatiapp-100527385314276"*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  className="disable-link"*/}
+            {/*  style={ { color: 'black' } }*/}
+            {/*>*/}
+            {/*  <IconButton*/}
+            {/*    color="inherit"*/}
+            {/*  >*/}
+            {/*    <FacebookIcon />*/}
+            {/*  </IconButton>*/}
+            {/*</a>*/}
+            <Search indices={searchIndices}/>
           </div> }
           { !search && <>
             { installApp }
@@ -202,19 +208,20 @@ export default function Navbar({ search = true }) {
                 <InstagramIcon />
               </IconButton>
             </a>
-            <a
-              href="https://www.facebook.com/curiozitatiapp-100527385314276"
-              target="_blank"
-              rel="noreferrer"
-              className="disable-link"
-              style={ { color: 'black' } }
-            >
-              <IconButton
-                color="inherit"
-              >
-                <FacebookIcon />
-              </IconButton>
-            </a>
+            {/*<a*/}
+            {/*  href="https://www.facebook.com/curiozitatiapp-100527385314276"*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  className="disable-link"*/}
+            {/*  style={ { color: 'black' } }*/}
+            {/*>*/}
+            {/*  <IconButton*/}
+            {/*    color="inherit"*/}
+            {/*  >*/}
+            {/*    <FacebookIcon />*/}
+            {/*  </IconButton>*/}
+            {/*</a>*/}
+            <Search indices={searchIndices}/>
           </> }
           { search && <div className={ classes.sectionMobile }>
             <NavbarMobileMenu>

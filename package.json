@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "develop": "gatsby develop",
-    "start": "gatsby clean && gatsby develop",
+    "start": "gatsby develop",
     "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
@@ -17,10 +17,13 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@styled-icons/fa-solid": "^10.26.0",
+    "algoliasearch": "^3.35.1",
     "axios": "^0.21.1",
     "date-fns": "^2.17.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.11.0",
+    "gatsby-plugin-algolia": "^0.16.3",
     "gatsby-plugin-google-gtag": "^2.8.0",
     "gatsby-plugin-layout": "^1.10.0",
     "gatsby-plugin-manifest": "^2.12.0",
@@ -44,9 +47,11 @@
     "react-device-detect": "^1.15.0",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-instantsearch-dom": "^6.10.1",
     "react-share": "^4.3.1",
     "react-swipeable-views": "^0.13.9",
-    "slug": "^4.0.2"
+    "slug": "^4.0.2",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "clsx": "^1.1.1"
