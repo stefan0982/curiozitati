@@ -65,6 +65,7 @@ const NotFoundPage = () => {
           <div className="star" />
           <div className="star" />
           <div className="star" />
+          <div className="star" />
 
         </div>
 
