@@ -7,7 +7,7 @@ import './styles.css'
 
 const InfinityScroll = ({ pageContext: { data } }) => {
   const [hasMore, setMore] = useState( data.length > 7 )
-  const [currentList, addToList] = useState( [...data.slice( 0, 7 )] )
+  const [currentList, addToList] = useState( [...data.slice( 0, 2 )] )
 
   const loadData = () => {
     const currentLength = currentList.length
@@ -23,7 +23,7 @@ const InfinityScroll = ({ pageContext: { data } }) => {
       return
     }
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement
-    if ( scrollTop + clientHeight > scrollHeight - 400 ) {
+    if ( scrollTop + clientHeight > scrollHeight - 500 ) {
       loadData()
     }
    }
@@ -37,7 +37,7 @@ const InfinityScroll = ({ pageContext: { data } }) => {
 
   return (
     <>
-      <Navbar search={false}/>
+      <Navbar/>
       <MainGridContainer>
         <SEO
           article

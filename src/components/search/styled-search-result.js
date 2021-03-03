@@ -30,7 +30,7 @@ export default styled(SearchResult)`
   .Hits {
     ul {
       list-style: none;
-      margin-left: 0;
+      margin-left: -20px;
     }
 
     li.ais-Hits-item {
