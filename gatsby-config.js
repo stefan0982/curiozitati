@@ -44,6 +44,8 @@ module.exports = {
     },
     `gatsby-theme-material-ui`,
     `gatsby-plugin-layout`,
+    `gatsby-plugin-postbuild`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     {
       resolve: `gatsby-plugin-modal-routing`,
       options: {
@@ -103,15 +105,9 @@ module.exports = {
         theme_color: `#ffecb2`,
         display    : `standalone`,
         icon: "static/square_logo.png",
-        icon_options: {
-          // For all the options available,
-          // please see the section "Additional Resources" below.
-          purpose: `any maskable`,
-        },
         crossOrigin: `use-credentials`,
       },
     },
-    `gatsby-plugin-offline`,
-    // `gatsby-plugin-remove-serviceworker`
+    `gatsby-plugin-remove-serviceworker`
   ]
 };

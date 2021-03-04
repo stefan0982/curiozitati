@@ -70,6 +70,7 @@ export default function PostShareMenu({
         ref={ anchorRef }
         aria-controls={ open ? 'menu-list-grow' : undefined }
         aria-haspopup="true"
+        aria-label="Share"
         onClick={ handleToggle }
         style={ {
           marginTop  : 12,

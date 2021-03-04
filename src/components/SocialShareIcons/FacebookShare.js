@@ -6,6 +6,7 @@ export const FacebookShare = ({shareUrl, title}) => {
     <FacebookShareButton
       url={ shareUrl }
       quote={ title }
+      aria-label="Facebook Share Button"
     >
       <FacebookIcon
         size={ 36 }

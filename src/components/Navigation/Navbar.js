@@ -58,6 +58,7 @@ export default function Navbar({ search = true }) {
     <GooglePlayLink>
       <IconButton
         color="inherit"
+        aria-label="install app"
       >
         <AndroidRoundedIcon />
       </IconButton>
@@ -82,6 +83,7 @@ export default function Navbar({ search = true }) {
               edge="start"
               className={ classes.menuButton }
               color="primary"
+              aria-label="Logo"
             >
               <img
                 src={ logo }
@@ -101,12 +103,14 @@ export default function Navbar({ search = true }) {
             <InstagramLink>
               <IconButton
                 color="inherit"
+                aria-label="instagram"
               >
                 <InstagramIcon />
               </IconButton>
             </InstagramLink>
             <FacebookLink>
               <IconButton
+                aria-label="facebook"
                 color="inherit"
               >
                 <FacebookIcon />
@@ -117,6 +121,7 @@ export default function Navbar({ search = true }) {
             { installApp }
             <InstagramLink>
               <IconButton
+                aria-label="instagram"
                 color="inherit"
               >
                 <InstagramIcon />
@@ -124,6 +129,7 @@ export default function Navbar({ search = true }) {
             </InstagramLink>
             <FacebookLink>
               <IconButton
+                aria-label="facebook"
                 color="inherit"
               >
                 <FacebookIcon />

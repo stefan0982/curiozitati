@@ -56,7 +56,6 @@ export default function NavbarMobileMenu({children}) {
     prevOpen.current = open;
   }, [open]);
 
-  // TODO fix menu item on install app instead of iconButton
 
   return (
     <div className={classes.root}>
@@ -65,6 +64,7 @@ export default function NavbarMobileMenu({children}) {
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
+          aria-label="More details"
           onClick={handleToggle}
           style={{ marginRight: -14, marginLeft: 2, color: 'black' }}
         >

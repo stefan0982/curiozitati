@@ -1,13 +1,14 @@
  [-] de adauagat animatie la schimbarea paginii
  [v] de corectat inaltimea la horizontal categorii, cand se deschide tastatura
  [v] de pus la modal si pe postpage gatsbyImage
- [-] de actualizat contentul la intrare
+ [v] de actualizat contentul la intrare
  [-] la schimbarea paginii pozitia la horizontal categorii sa nu se schimbe
  [-] de imbunatatit seo
  [v] de pus robots.txt
  [v] sitemap
+ [-] de corectat toate aria-label la menuitem link, button
 
 
 
- -- de schimbat logica la cautare
+ v de schimbat logica la cautare
  -- de incercat cu rect native web view
