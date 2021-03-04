@@ -44,8 +44,6 @@ module.exports = {
     },
     `gatsby-theme-material-ui`,
     `gatsby-plugin-layout`,
-    `gatsby-plugin-postbuild`,
-    `gatsby-plugin-webpack-bundle-analyser-v2`,
     {
       resolve: `gatsby-plugin-modal-routing`,
       options: {
@@ -108,6 +106,5 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    `gatsby-plugin-remove-serviceworker`
   ]
 };
