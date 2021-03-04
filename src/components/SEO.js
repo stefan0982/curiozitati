@@ -26,6 +26,8 @@ const SEO = ({ title, description, image, article }) => {
     url: `${siteUrl}${pathname}`,
   }
 
+  console.log(seo.image)
+
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
       <meta name="description" content={seo.description} />
@@ -73,7 +75,7 @@ SEO.defaultProps = {
   title: 'Curiozitati',
   description: 'O zi în care nu înveți nimic nou este o zi pierdută, deaceea'
                + ' află cele mai interesante curiozități aici',
-  image: banner,
+  image: `//curiozitati.app${banner}`,
   article: true,
 }
 

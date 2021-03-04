@@ -1,15 +1,19 @@
 import React from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow              from '@material-ui/core/Grow';
-import Paper             from '@material-ui/core/Paper';
-import Popper            from '@material-ui/core/Popper';
-import MenuItem          from '@material-ui/core/MenuItem';
-import MenuList          from '@material-ui/core/MenuList';
-import MoreIcon          from '@material-ui/icons/MoreVert'
-import InstagramIcon     from '@material-ui/icons/Instagram'
-import FacebookIcon      from '@material-ui/icons/Facebook'
-import { makeStyles }    from '@material-ui/core/styles';
-import IconButton        from '@material-ui/core/IconButton'
+import Grow           from '@material-ui/core/Grow';
+import Paper          from '@material-ui/core/Paper';
+import Popper             from '@material-ui/core/Popper';
+import MenuItem           from '@material-ui/core/MenuItem';
+import MenuList           from '@material-ui/core/MenuList';
+import MoreIcon           from '@material-ui/icons/MoreVert'
+import InstagramIcon      from '@material-ui/icons/Instagram'
+import FacebookIcon       from '@material-ui/icons/Facebook'
+import { makeStyles }     from '@material-ui/core/styles';
+import IconButton         from '@material-ui/core/IconButton'
+import InstagramLink      from './InstagramLink'
+import FacebookLink       from './FacebookLink'
+import GooglePlayLink     from './GooglePlayLink'
+import AndroidRoundedIcon from '@material-ui/icons/AndroidRounded'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,21 +80,14 @@ export default function NavbarMobileMenu({children}) {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    {children}
-                    <a
-                      href="https://www.instagram.com/curiozitati.app/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="disable-link"
-                      style={ { color: 'black' } }
-                    ><MenuItem onClick={handleClose}> <InstagramIcon /> </MenuItem> </a>
-                    <a
-                      href="https://www.facebook.com/curiozitatiapp-100527385314276"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="disable-link"
-                      style={ { color: 'black' } }
-                    ><MenuItem onClick={handleClose}> <FacebookIcon /> </MenuItem></a>
+                    <GooglePlayLink>
+                      <MenuItem onClick={handleClose}> <AndroidRoundedIcon /> </MenuItem>
+                    </GooglePlayLink>
+                    <InstagramLink>
+                      <MenuItem onClick={handleClose}> <InstagramIcon /> </MenuItem> </InstagramLink>
+                    <FacebookLink>
+                    <MenuItem onClick={handleClose}> <FacebookIcon /> </MenuItem>
+                    </FacebookLink>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

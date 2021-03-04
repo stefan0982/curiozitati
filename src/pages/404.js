@@ -2,6 +2,10 @@ import * as React from 'react'
 import './404.css'
 import { Button } from '@material-ui/core'
 import { Link }   from 'gatsby'
+import rocket from '../../static/rocket.svg'
+import earth from '../../static/earth.svg'
+import moon from '../../static/moon.svg'
+import astronaut from '../../static/astronaut.svg'
 
 const NotFoundPage = () => {
   return (
@@ -36,25 +40,25 @@ const NotFoundPage = () => {
         <div className="objects">
           <img
             className="object_rocket"
-            src="https://salehriaz.com/404Page/img/rocket.svg"
+            src={rocket}
             width="40px"
            alt="rocket"/>
           <div className="earth-moon">
             <img
               className="object_earth"
-              src="https://salehriaz.com/404Page/img/earth.svg"
+              src={earth}
               width="100px"
              alt="earth"/>
             <img
               className="object_moon"
-              src="https://salehriaz.com/404Page/img/moon.svg"
+              src={moon}
               width="80px"
              alt="moon"/>
           </div>
           <div className="box_astronaut">
             <img
               className="object_astronaut"
-              src="https://salehriaz.com/404Page/img/astronaut.svg"
+              src={astronaut}
               width="140px"
              alt="astronaut"/>
           </div>

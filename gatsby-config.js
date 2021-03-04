@@ -13,7 +13,7 @@ module.exports = {
     description: `Curiozități noi în fiecare zi, începe să fii mai bun, uimește-ți prietenii, investiția în cunoștințe mereu îți va oferi cel mai mare profit, Ziua în care nu înveți nimic nou este pierdută`,
     siteLanguage   : `ro`,
     author: `stefan`,
-    image: `/banner.png`,
+    image: `//curiozitati.app/banner.png`,
     twitterUsername: '@curiozitati2'
   },
   plugins: [
@@ -103,6 +103,11 @@ module.exports = {
         theme_color: `#ffecb2`,
         display    : `standalone`,
         icon: "static/square_logo.png",
+        icon_options: {
+          // For all the options available,
+          // please see the section "Additional Resources" below.
+          purpose: `any maskable`,
+        },
         crossOrigin: `use-credentials`,
       },
     },

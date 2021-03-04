@@ -1,6 +1,6 @@
-import React from 'react'
-import { makeStyles }           from '@material-ui/core/styles'
-import AppBar                         from '@material-ui/core/AppBar'
+import React              from 'react'
+import { makeStyles }     from '@material-ui/core/styles'
+import AppBar             from '@material-ui/core/AppBar'
 import Toolbar            from '@material-ui/core/Toolbar'
 import IconButton         from '@material-ui/core/IconButton'
 import logo               from '../../../static/logo.png'
@@ -10,8 +10,18 @@ import AndroidRoundedIcon from '@material-ui/icons/AndroidRounded'
 import NavbarMobileMenu   from './NavbarMobileMenu'
 
 // search import
-import Search             from '../search'
-const searchIndices = [{ name: `Curiozitati`, title: `Curiozitati` }]
+import Search         from '../search'
+import InstagramLink  from './InstagramLink'
+import GooglePlayLink from './GooglePlayLink'
+import FacebookLink   from './FacebookLink'
+import FacebookIcon   from '@material-ui/icons/Facebook'
+
+const searchIndices = [
+  {
+    name : `Curiozitati`,
+    title: `Curiozitati`,
+  },
+]
 
 const useStyles = makeStyles( (theme) => (
   {
@@ -42,24 +52,17 @@ const useStyles = makeStyles( (theme) => (
   }
 ) )
 
-
 export default function Navbar({ search = true }) {
 
-    const installApp = (
-      <a
-        href="https://play.google.com/store/apps/details?id=com.curiozitati"
-        target="_blank"
-        rel="noreferrer"
-        className="disable-link"
-        style={ { color: 'black' } }
+  const installApp = (
+    <GooglePlayLink>
+      <IconButton
+        color="inherit"
       >
-        <IconButton
-          color="inherit"
-        >
-          <AndroidRoundedIcon />
-        </IconButton>
-      </a>
-    )
+        <AndroidRoundedIcon />
+      </IconButton>
+    </GooglePlayLink>
+  )
 
   const classes = useStyles()
 
@@ -69,7 +72,6 @@ export default function Navbar({ search = true }) {
         position="fixed"
         color="transparent"
         className="header"
-
       >
         <Toolbar>
           <Link
@@ -91,75 +93,49 @@ export default function Navbar({ search = true }) {
               />
             </IconButton>
           </Link>
-          {/*search bar */}
-          { search && <Search indices={searchIndices}/> }
+          {/*search bar */ }
+          { search && <Search indices={ searchIndices } /> }
           <div className={ classes.grow } />
           { search && <div className={ classes.sectionDesktop }>
             { installApp }
-            <a
-              href="https://www.instagram.com/curiozitati.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="disable-link"
-              style={ { color: 'black' } }
-            >
+            <InstagramLink>
               <IconButton
                 color="inherit"
               >
                 <InstagramIcon />
               </IconButton>
-            </a>
-            {/*<a*/}
-            {/*  href="https://www.facebook.com/curiozitatiapp-100527385314276"*/}
-            {/*  target="_blank"*/}
-            {/*  rel="noreferrer"*/}
-            {/*  className="disable-link"*/}
-            {/*  style={ { color: 'black' } }*/}
-            {/*>*/}
-            {/*  <IconButton*/}
-            {/*    color="inherit"*/}
-            {/*  >*/}
-            {/*    <FacebookIcon />*/}
-            {/*  </IconButton>*/}
-            {/*</a>*/}
+            </InstagramLink>
+            <FacebookLink>
+              <IconButton
+                color="inherit"
+              >
+                <FacebookIcon />
+              </IconButton>
+            </FacebookLink>
           </div> }
           { !search && <>
             { installApp }
-            <a
-              href="https://www.instagram.com/curiozitati.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="disable-link"
-              style={ { color: 'black' } }
-            >
+            <InstagramLink>
               <IconButton
                 color="inherit"
               >
                 <InstagramIcon />
               </IconButton>
-            </a>
-            {/*<a*/}
-            {/*  href="https://www.facebook.com/curiozitatiapp-100527385314276"*/}
-            {/*  target="_blank"*/}
-            {/*  rel="noreferrer"*/}
-            {/*  className="disable-link"*/}
-            {/*  style={ { color: 'black' } }*/}
-            {/*>*/}
-            {/*  <IconButton*/}
-            {/*    color="inherit"*/}
-            {/*  >*/}
-            {/*    <FacebookIcon />*/}
-            {/*  </IconButton>*/}
-            {/*</a>*/}
+            </InstagramLink>
+            <FacebookLink>
+              <IconButton
+                color="inherit"
+              >
+                <FacebookIcon />
+              </IconButton>
+            </FacebookLink>
           </> }
           { search && <div className={ classes.sectionMobile }>
-            <NavbarMobileMenu>
-              { installApp }
-            </NavbarMobileMenu>
+            <NavbarMobileMenu/>
           </div> }
         </Toolbar>
       </AppBar>
-      <Toolbar/>
+      <Toolbar />
     </>
   )
 }

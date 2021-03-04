@@ -15,7 +15,7 @@ const useStyles = makeStyles( {
   },
 } )
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
 
   const classes = useStyles()
 
@@ -26,12 +26,11 @@ const Layout = ({ children }) => {
         <div className={ classes.main }>
           { children }
         </div>
-        <Footer
+        {location.key !== 'initial' && <Footer
           title={ 'Cele mai interesante curiozități' }
-        />
+        />}
       </div>
     </ContextProviderComponent>
-
   )
 }
 

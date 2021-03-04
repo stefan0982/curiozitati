@@ -44,7 +44,7 @@
 }
 
 .bg-purple{
-    background: url(http://salehriaz.com/404Page/img/bg_purple.png) repeat-x left top;
+    background: url('../../static/bg_purple.png') repeat-x left top;
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -81,8 +81,8 @@
     border: 1px solid #FFCB39;
     border-radius: 100px;
     font-weight: 400;
-    display: block;
-    color: white;
+    /*display: block;*/
+    color: black;
     text-align: center;
     text-decoration: none;
     letter-spacing : 2px;
@@ -164,10 +164,8 @@
 }
 
 .stars{
-    background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
-    background-repeat: repeat;
     background-size: contain;
-    background-position: left top;
+    background: url('../../static/stars.svg') repeat left top;
 }
 
 .glowing_stars .star{
