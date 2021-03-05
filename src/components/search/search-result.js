@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import { default as React } from 'react'
 import {
-  connectStateResults, Hits, Index, Snippet, PoweredBy,
+  connectStateResults, Hits, Index, Snippet,
 } from 'react-instantsearch-dom'
 
 const HitCount = connectStateResults( ({ searchResults }) => {
@@ -49,7 +49,6 @@ const SearchResult = ({
         key={ index.name }
       />
     ) ) }
-    {/*<PoweredBy />*/}
   </div>
 )
 

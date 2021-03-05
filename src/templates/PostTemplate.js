@@ -58,11 +58,6 @@ export const query = graphql`
           title
           description
         }
-        image:imagine {
-          fixed(width: 1080) {
-            ...GatsbyContentfulFixed
-          }
-        }
         categoria {
           avatar {
             fixed(width: 40, height: 40) {
