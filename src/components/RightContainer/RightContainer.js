@@ -9,7 +9,6 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import GatsbyImage                       from 'gatsby-image'
 
 import slug     from 'slug'
-import Skeleton from '@material-ui/lab/Skeleton'
 
 const query = graphql`{
   categorii: allContentfulCategorii(sort: {order: DESC, fields: curiozitati___children}) {
@@ -42,28 +41,10 @@ const useStyles = makeStyles ( (theme) => (
 ) )
 
 export default function RightContainer() {
-  const [loading, setLoading] = useState( true )
   const classes = useStyles ()
   const { categorii } = useStaticQuery ( query )
   // categoria toate la care pagina trebuie sa fie doar /
   const categoriaToate = categorii.edges.filter(data => data.node.denumirea === 'Toate')[0].node
-
-  useEffect(() => {
-    setLoading(false)
-  }, [])
-
-  if (loading) {
-    return <List dense className={ classes.root }>
-      {[0,1,2,3,4,5,6,7,8,9].map(i => (
-        <ListItem button className={ classes.item } key={i}>
-          <ListItemAvatar>
-            <Skeleton variant="circle" width={40} height={40} />
-          </ListItemAvatar>
-          <ListItemText style={{ color: 'black' }} primary={ <Skeleton variant="text" /> } />
-        </ListItem>
-      ))}
-    </List>
-  }
 
   // de simplificat sistema aceasta
   // prin schimbarea doar la link cu if = toate, link to / else slug(categorie)

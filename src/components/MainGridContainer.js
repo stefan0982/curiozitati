@@ -26,12 +26,12 @@ export default function MainGridContainer({children}) {
       <Grid container direction="row" justify="space-evenly">
 
         {/* like instagram stories, pentru categorii pe telefon*/}
-        {/*<Hidden mdUp>*/}
-        {/*  <Grid item xs={12} sm={12} >*/}
-        {/*    /!*<div style={{ height: 100, border: '1px solid orange', borderRadius: 4 }}/>*!/*/}
-        {/*    <HorizontalList/>*/}
-        {/*  </Grid>*/}
-        {/*</Hidden>*/}
+        <Hidden mdUp>
+          <Grid item xs={12} sm={12} >
+            {/*<div style={{ height: 100, border: '1px solid orange', borderRadius: 4 }}/>*/}
+            <HorizontalList/>
+          </Grid>
+        </Hidden>
 
          {/* feed */}
         <Grid item xs={12} sm={10} md={6} lg={5} xl={5}>

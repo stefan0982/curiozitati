@@ -7,7 +7,6 @@ import { Typography }                    from '@material-ui/core'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import GatsbyImage                       from 'gatsby-image'
 import slug                              from 'slug'
-import Skeleton                          from '@material-ui/lab/Skeleton'
 
 const query = graphql`
   {
@@ -48,7 +47,6 @@ const useStyles = makeStyles( (theme) => (
 ) )
 
 export default function HorizontalList() {
-  const [loading, setLoading] = useState( true )
   const classes = useStyles()
   const { categorii } = useStaticQuery( query )
   const [windowWidth, setWindowWidth] = useState( 0 )
@@ -63,7 +61,6 @@ export default function HorizontalList() {
     typeof window !== `undefined` && window.addEventListener( 'resize',
       resizeWindow,
     )
-    setLoading( false )
     return () => typeof window !== `undefined` && window.removeEventListener(
       'resize', resizeWindow )
   }, [] )
@@ -76,31 +73,6 @@ export default function HorizontalList() {
     categorySize = '11vh'
   }
 
-  if (loading) {
-    return <div className={ classes.root } >
-      <GridList className={ classes.gridList } >
-        { [0, 1, 2, 3, 4].map( i => (
-          <div
-            style={ { flexDirection: 'column', height: containerHeight , padding: 5  } }
-            key={ i }
-          >
-            <Skeleton
-              variant="circle"
-              style={ {
-                width : 60,
-                height: 60,
-              } }
-            />
-            <Typography
-              variant={ 'body2' }
-              color="textPrimary"
-              align="center"
-            ><Skeleton variant="text" /></Typography>
-          </div>
-        ) ) }
-      </GridList>
-    </div>
-  }
 
   return (
     <div className={ classes.root }>
