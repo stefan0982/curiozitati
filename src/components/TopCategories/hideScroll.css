@@ -1,0 +1,15 @@
+.gridList::-webkit-scrollbar {
+    /*display: none;*/
+    height: 6px;
+}
+
+.gridList::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.gridList::-webkit-scrollbar-thumb {
+    background: #ffecb2;
+    border-radius: 10px;
+}

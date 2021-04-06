@@ -8,6 +8,8 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import GatsbyImage                       from 'gatsby-image'
 import slug                              from 'slug'
 
+import './hideScroll.css'
+
 const query = graphql`
   {
   categorii:allContentfulCategorii(sort: {order: DESC, fields: curiozitati___children}) {
@@ -76,7 +78,8 @@ export default function HorizontalList() {
 
   return (
     <div className={ classes.root }>
-      <GridList className={ classes.gridList }>
+      <GridList className="gridList" style={{ flexWrap : 'nowrap',
+        transform: 'translateZ(0)', }}>
         { categorii.edges.map( ({ node }) => (
           <Link
             to={ node.denumirea === 'Toate' ? '/' : `/${ slug(
