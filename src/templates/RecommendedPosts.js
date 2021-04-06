@@ -15,7 +15,7 @@ const useStyles = makeStyles( (theme) => (
 ) )
 
 const query = graphql`{
-  data:allContentfulCuriozitati(limit: 4) {
+  data:allContentfulCuriozitati(skip: 15, limit: 4) {
     edges {
       node {
         linkId: createdAt(formatString: "DDMMYYHHmmss", locale: "ro")
