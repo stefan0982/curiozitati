@@ -8,7 +8,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import GatsbyImage                       from 'gatsby-image'
 import slug                              from 'slug'
 
-import './hideScroll.css'
+import './beautifyScroll.css'
 
 const query = graphql`
   {
